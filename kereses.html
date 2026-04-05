@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title>Kulcs Ingatlan - Kereses</title>
+<title>Kulcs Ingatlan - Keresés</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -42,12 +42,12 @@ tailwind.config = {
   </div>
   <div class="hidden md:flex gap-8 items-center">
     <nav class="flex gap-6">
-      <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline text-sm uppercase tracking-wider" href="index.html">Kezdolap</a>
-      <a class="text-[#e9c176] font-semibold font-headline text-sm uppercase tracking-wider" href="kereses.html">Kereses</a>
-      <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline text-sm uppercase tracking-wider" href="#">Kiado</a>
+      <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline text-sm uppercase tracking-wider" href="index.html">Kezdőlap</a>
+      <a class="text-[#e9c176] font-semibold font-headline text-sm uppercase tracking-wider" href="kereses.html">Keresés</a>
+      <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline text-sm uppercase tracking-wider" href="#">Kiadó</a>
     </nav>
     <button class="bg-[#e9c176] text-[#041627] px-5 py-2 rounded-md font-headline font-bold text-sm hover:scale-95 transition-all active:opacity-80">
-      Ingyenes ertekbecsles
+      Ingyenes értékbecslés
     </button>
   </div>
 </header>
@@ -58,19 +58,19 @@ tailwind.config = {
 <!-- Mobile Filter Panel -->
 <div class="mobile-filter fixed bottom-0 left-0 w-full h-[85vh] bg-surface-container-low z-[60] rounded-t-2xl overflow-y-auto md:hidden" id="mobileFilter">
   <div class="sticky top-0 bg-surface-container-low p-4 border-b border-outline-variant/10 flex justify-between items-center">
-    <h2 class="font-headline text-lg font-bold">Szures</h2>
+    <h2 class="font-headline text-lg font-bold">Szűrés</h2>
     <span class="material-symbols-outlined cursor-pointer text-on-surface-variant" onclick="toggleFilter()">close</span>
   </div>
   <div class="p-4 space-y-6 pb-32">
     <div class="space-y-3">
-      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Helyszin</label>
+      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Helyszín</label>
       <div class="relative">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline scale-90">location_on</span>
-        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm transition-all outline-none rounded-t-lg" placeholder="Varos, kerulet vagy utca" type="text"/>
+        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm transition-all outline-none rounded-t-lg" placeholder="Város, kerület vagy utca" type="text"/>
       </div>
     </div>
     <div class="space-y-3">
-      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ar (M Ft)</label>
+      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ár (M Ft)</label>
       <div class="flex gap-4 items-center">
         <input class="w-1/2 p-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" placeholder="Min" type="number"/>
         <div class="w-4 h-[2px] bg-outline-variant"></div>
@@ -78,38 +78,38 @@ tailwind.config = {
       </div>
     </div>
     <div class="space-y-3">
-      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ingatlan tipusa</label>
+      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ingatlan típusa</label>
       <div class="grid grid-cols-2 gap-2">
-        <button class="p-2.5 text-xs font-semibold border border-outline-variant/30 rounded-md bg-primary text-white">Lakas</button>
-        <button class="p-2.5 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Haz</button>
+        <button class="p-2.5 text-xs font-semibold border border-outline-variant/30 rounded-md bg-primary text-white">Lakás</button>
+        <button class="p-2.5 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Ház</button>
         <button class="p-2.5 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Telek</button>
         <button class="p-2.5 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Iroda</button>
       </div>
     </div>
     <div class="grid grid-cols-2 gap-4">
       <div class="space-y-3">
-        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Alapterulet (m2)</label>
+        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Alapterület (m2)</label>
         <input class="w-full p-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" placeholder="Min - Max" type="text"/>
       </div>
       <div class="space-y-3">
-        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Szobaszam</label>
+        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Szobaszám</label>
         <select class="w-full p-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none appearance-none">
-          <option>Osszes</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option>
+          <option>Összes</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option>
         </select>
       </div>
     </div>
     <div class="space-y-4 pt-4 border-t border-outline-variant/20">
-      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Extra tulajdonsagok</label>
+      <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Extra tulajdonságok</label>
       <div class="space-y-3">
-        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Erkely / Terasz</span></label>
+        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Erkély / Terasz</span></label>
         <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Kertkapcsolat</span></label>
-        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Garazs</span></label>
-        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Legkondicionalo</span></label>
-        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Uj epitesu</span></label>
+        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Garázs</span></label>
+        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Légkondicionáló</span></label>
+        <label class="flex items-center gap-3 cursor-pointer"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium">Új építésű</span></label>
       </div>
     </div>
     <button class="w-full py-4 bg-primary text-white font-headline font-bold uppercase tracking-widest text-sm rounded-md" onclick="toggleFilter()">
-      Kereses inditasa
+      Keresés indítása
     </button>
   </div>
 </div>
@@ -118,19 +118,19 @@ tailwind.config = {
   <!-- Filter Sidebar (Desktop) -->
   <aside class="hidden md:block w-80 lg:w-96 bg-surface-container-low p-6 h-[calc(100vh-72px)] sticky top-[72px] overflow-y-auto border-r border-outline-variant/10">
     <div class="flex items-center justify-between mb-8">
-      <h2 class="font-headline text-xl font-bold tracking-tight">Szures</h2>
+      <h2 class="font-headline text-xl font-bold tracking-tight">Szűrés</h2>
       <button class="text-secondary font-label text-xs uppercase font-bold hover:underline">Alaphelyzet</button>
     </div>
     <div class="space-y-8">
       <div class="space-y-3">
-        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Helyszin</label>
+        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Helyszín</label>
         <div class="relative">
           <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline scale-90">location_on</span>
-          <input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm transition-all outline-none" placeholder="Varos, kerulet vagy utca" type="text"/>
+          <input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm transition-all outline-none" placeholder="Város, kerület vagy utca" type="text"/>
         </div>
       </div>
       <div class="space-y-3">
-        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ar (M Ft)</label>
+        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ár (M Ft)</label>
         <div class="flex gap-4 items-center">
           <input class="w-1/2 p-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" placeholder="Min" type="number"/>
           <div class="w-4 h-[2px] bg-outline-variant"></div>
@@ -138,38 +138,38 @@ tailwind.config = {
         </div>
       </div>
       <div class="space-y-3">
-        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ingatlan tipusa</label>
+        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Ingatlan típusa</label>
         <div class="grid grid-cols-2 gap-2">
-          <button class="p-2 text-xs font-semibold border border-outline-variant/30 rounded-md bg-primary text-white">Lakas</button>
-          <button class="p-2 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Haz</button>
+          <button class="p-2 text-xs font-semibold border border-outline-variant/30 rounded-md bg-primary text-white">Lakás</button>
+          <button class="p-2 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Ház</button>
           <button class="p-2 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Telek</button>
           <button class="p-2 text-xs font-semibold border border-outline-variant/30 rounded-md hover:bg-surface-container-high transition-colors">Iroda</button>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-6">
         <div class="space-y-3">
-          <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Alapterulet (m2)</label>
+          <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Alapterület (m2)</label>
           <input class="w-full p-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" placeholder="Min - Max" type="text"/>
         </div>
         <div class="space-y-3">
-          <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Szobaszam</label>
+          <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Szobaszám</label>
           <select class="w-full p-3 bg-surface-container-lowest border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none appearance-none">
-            <option>Osszes</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option>
+            <option>Összes</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option>
           </select>
         </div>
       </div>
       <div class="space-y-4 pt-4 border-t border-outline-variant/20">
-        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Extra tulajdonsagok</label>
+        <label class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant">Extra tulajdonságok</label>
         <div class="space-y-3">
-          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Erkely / Terasz</span></label>
+          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Erkély / Terasz</span></label>
           <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Kertkapcsolat</span></label>
-          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Garazs</span></label>
-          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Legkondicionalo</span></label>
-          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Uj epitesu</span></label>
+          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Garázs</span></label>
+          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Légkondicionáló</span></label>
+          <label class="flex items-center gap-3 cursor-pointer group"><input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-secondary" type="checkbox"/><span class="text-sm font-medium group-hover:text-secondary transition-colors">Új építésű</span></label>
         </div>
       </div>
       <button class="w-full py-4 bg-primary text-white font-headline font-bold uppercase tracking-widest text-sm rounded-md shadow-lg shadow-primary/20 hover:bg-primary-container transition-all">
-        Kereses inditasa
+        Keresés indítása
       </button>
     </div>
   </aside>
@@ -179,14 +179,14 @@ tailwind.config = {
     <!-- Toolbar -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <h1 class="font-headline text-xl md:text-3xl font-extrabold tracking-tight">Keresesi talalatok</h1>
+        <h1 class="font-headline text-xl md:text-3xl font-extrabold tracking-tight">Keresési találatok</h1>
         <p class="text-on-surface-variant font-label text-xs md:text-sm mt-1">124 ingatlan felel meg a szempontoknak</p>
       </div>
       <div class="flex items-center gap-2 md:gap-4 bg-surface-container-low p-1.5 rounded-lg self-start">
         <!-- Mobile filter button -->
         <button class="md:hidden p-2 flex items-center gap-2 text-primary" onclick="toggleFilter()">
           <span class="material-symbols-outlined text-[20px]">tune</span>
-          <span class="text-xs font-bold uppercase">Szuro</span>
+          <span class="text-xs font-bold uppercase">Szűrő</span>
         </button>
         <div class="hidden md:flex bg-surface-container-lowest rounded-md shadow-sm">
           <button class="p-2 flex items-center gap-2 text-primary">
@@ -196,14 +196,14 @@ tailwind.config = {
         </div>
         <button class="hidden md:flex p-2 items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
           <span class="material-symbols-outlined text-[20px]">map</span>
-          <span class="text-xs font-bold uppercase">Terkep</span>
+          <span class="text-xs font-bold uppercase">Térkép</span>
         </button>
         <div class="h-6 w-[1px] bg-outline-variant/30 mx-1 md:mx-2"></div>
         <select class="bg-transparent border-none text-xs font-bold uppercase tracking-wider focus:ring-0 cursor-pointer pr-6">
-          <option>Legujabb</option>
-          <option>Ar: Alacsony</option>
-          <option>Ar: Magas</option>
-          <option>Meret</option>
+          <option>Legújabb</option>
+          <option>Ár: Alacsony</option>
+          <option>Ár: Magas</option>
+          <option>Méret</option>
         </select>
       </div>
     </div>
@@ -222,20 +222,20 @@ tailwind.config = {
         <div class="p-4 md:p-6 space-y-3 md:space-y-4">
           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
             <div class="min-w-0">
-              <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors truncate">Naphegy Modern Panoramas Penthouse</h3>
+              <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors truncate">Naphegy Modern Panorámás Penthouse</h3>
               <p class="text-on-surface-variant text-xs md:text-sm flex items-center gap-1 mt-1">
-                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, I. Kerulet
+                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, I. Kerület
               </p>
             </div>
             <p class="font-headline text-lg md:text-xl font-extrabold text-primary flex-shrink-0">245 M Ft</p>
           </div>
           <div class="flex items-center gap-4 md:gap-6 py-3 md:py-4 border-t border-outline-variant/10">
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterulet</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterület</span>
               <span class="text-xs md:text-sm font-semibold">112 m2</span>
             </div>
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Szobak</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Szobák</span>
               <span class="text-xs md:text-sm font-semibold">3 szoba</span>
             </div>
             <div class="flex flex-col">
@@ -250,7 +250,7 @@ tailwind.config = {
       <div class="group relative flex flex-col bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-1">
         <div class="relative h-52 sm:h-72 overflow-hidden">
           <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt="Property"/>
-          <div class="absolute top-4 left-4 bg-[#775a19] px-3 py-1 text-white text-[10px] font-bold uppercase tracking-widest">Uj epitesu</div>
+          <div class="absolute top-4 left-4 bg-[#775a19] px-3 py-1 text-white text-[10px] font-bold uppercase tracking-widest">Új építésű</div>
           <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#e9c176] hover:text-primary transition-all">
             <span class="material-symbols-outlined text-[20px]">favorite</span>
           </button>
@@ -260,22 +260,22 @@ tailwind.config = {
             <div class="min-w-0">
               <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors truncate">Minimalista Loft a Duna-parton</h3>
               <p class="text-on-surface-variant text-xs md:text-sm flex items-center gap-1 mt-1">
-                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, IX. Kerulet
+                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, IX. Kerület
               </p>
             </div>
             <p class="font-headline text-lg md:text-xl font-extrabold text-primary flex-shrink-0">158 M Ft</p>
           </div>
           <div class="flex items-center gap-4 md:gap-6 py-3 md:py-4 border-t border-outline-variant/10">
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterulet</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterület</span>
               <span class="text-xs md:text-sm font-semibold">89 m2</span>
             </div>
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Szobak</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Szobák</span>
               <span class="text-xs md:text-sm font-semibold">2 szoba</span>
             </div>
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Allapot</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Állapot</span>
               <span class="text-xs md:text-sm font-semibold">Luxus</span>
             </div>
           </div>
@@ -293,24 +293,24 @@ tailwind.config = {
         <div class="p-4 md:p-6 space-y-3 md:space-y-4">
           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
             <div class="min-w-0">
-              <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors">Tortenelmi Polgari Lakas</h3>
+              <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors">Történelmi Polgári Lakás</h3>
               <p class="text-on-surface-variant text-xs md:text-sm flex items-center gap-1 mt-1">
-                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, VI. Kerulet
+                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, VI. Kerület
               </p>
             </div>
             <p class="font-headline text-lg md:text-xl font-extrabold text-primary flex-shrink-0">310 M Ft</p>
           </div>
           <div class="flex items-center gap-4 md:gap-6 py-3 md:py-4 border-t border-outline-variant/10">
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterulet</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterület</span>
               <span class="text-xs md:text-sm font-semibold">145 m2</span>
             </div>
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Szobak</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Szobák</span>
               <span class="text-xs md:text-sm font-semibold">4 szoba</span>
             </div>
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Belmagassag</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Belmagasság</span>
               <span class="text-xs md:text-sm font-semibold">4.2 m</span>
             </div>
           </div>
@@ -328,16 +328,16 @@ tailwind.config = {
         <div class="p-4 md:p-6 space-y-3 md:space-y-4">
           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
             <div class="min-w-0">
-              <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors">Csaladi Haz Kertvarosi Kornyezetben</h3>
+              <h3 class="font-headline text-base md:text-lg font-bold leading-tight group-hover:text-secondary transition-colors">Családi Ház Kertvárosi Környezetben</h3>
               <p class="text-on-surface-variant text-xs md:text-sm flex items-center gap-1 mt-1">
-                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, II/A Kerulet
+                <span class="material-symbols-outlined text-sm">location_on</span> Budapest, II/A Kerület
               </p>
             </div>
             <p class="font-headline text-lg md:text-xl font-extrabold text-primary flex-shrink-0">189 M Ft</p>
           </div>
           <div class="flex items-center gap-4 md:gap-6 py-3 md:py-4 border-t border-outline-variant/10">
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterulet</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Alapterület</span>
               <span class="text-xs md:text-sm font-semibold">160 m2</span>
             </div>
             <div class="flex flex-col">
@@ -345,8 +345,8 @@ tailwind.config = {
               <span class="text-xs md:text-sm font-semibold">600 m2</span>
             </div>
             <div class="flex flex-col">
-              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Garazs</span>
-              <span class="text-xs md:text-sm font-semibold">2 beallos</span>
+              <span class="text-[9px] md:text-[10px] uppercase font-bold text-outline tracking-tighter">Garázs</span>
+              <span class="text-xs md:text-sm font-semibold">2 beállós</span>
             </div>
           </div>
         </div>
@@ -373,7 +373,7 @@ tailwind.config = {
 <!-- AI Chatbot -->
 <div class="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-[45] flex flex-col items-end gap-3">
   <div class="bg-primary text-white p-4 rounded-xl rounded-br-none shadow-2xl max-w-[260px] md:max-w-xs border-l-4 border-secondary hidden" id="chatBubble">
-    <p class="text-sm leading-relaxed">Udvozlom! AI asszisztens vagyok. <br/><strong>Milyen ingatlant keresel?</strong></p>
+    <p class="text-sm leading-relaxed">Üdvözlöm! AI asszisztens vagyok. <br/><strong>Milyen ingatlant keresel?</strong></p>
   </div>
   <button class="w-14 h-14 md:w-16 md:h-16 bg-[#041627] text-[#e9c176] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-transform relative" onclick="document.getElementById('chatBubble').classList.toggle('hidden')">
     <span class="material-symbols-outlined text-2xl md:text-3xl">smart_toy</span>
@@ -385,11 +385,11 @@ tailwind.config = {
 <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 backdrop-blur-md bg-[#041627]/90 shadow-[0_-4px_20px_rgba(4,22,39,0.3)]">
   <a class="flex flex-col items-center justify-center text-slate-400 hover:text-white" href="index.html">
     <span class="material-symbols-outlined">home</span>
-    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Kezdolap</span>
+    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Kezdőlap</span>
   </a>
   <a class="flex flex-col items-center justify-center text-[#e9c176] scale-110" href="kereses.html">
     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
-    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Kereses</span>
+    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Keresés</span>
   </a>
   <a class="flex flex-col items-center justify-center text-slate-400 hover:text-white" href="#">
     <span class="material-symbols-outlined">favorite</span>
@@ -406,9 +406,9 @@ tailwind.config = {
   <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
     <span class="font-headline font-bold text-white uppercase tracking-widest text-sm">Kulcs Ingatlan</span>
     <div class="flex gap-6 text-xs font-label text-slate-500 uppercase tracking-widest">
-      <a class="hover:text-white transition-colors" href="#">Adatvedelem</a>
+      <a class="hover:text-white transition-colors" href="#">Adatvédelem</a>
       <a class="hover:text-white transition-colors" href="#">Impresszum</a>
-      <a class="hover:text-white transition-colors" href="#">Sutik</a>
+      <a class="hover:text-white transition-colors" href="#">Sütik</a>
     </div>
     <span class="text-xs text-slate-500">© 2024 Kulcs Ingatlan</span>
   </div>

@@ -37,7 +37,7 @@ tailwind.config = {
   <div class="bg-surface-container-lowest rounded-2xl p-5 md:p-10 w-full max-w-sm md:max-w-md shadow-2xl">
     <div class="text-center mb-8">
       <h1 class="font-headline text-2xl font-bold text-primary uppercase tracking-widest mb-2">Kulcs Ingatlan</h1>
-      <p class="text-on-surface-variant text-sm">Admin felulet bejelentkezes</p>
+      <p class="text-on-surface-variant text-sm">Admin felület bejelentkezés</p>
     </div>
     <div class="space-y-5">
       <div class="space-y-2">
@@ -45,13 +45,13 @@ tailwind.config = {
         <input id="loginEmail" class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none rounded-t-lg" placeholder="admin@kulcsingatlan.hu" type="email" value="admin@kulcsingatlan.hu"/>
       </div>
       <div class="space-y-2">
-        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Jelszo</label>
+        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Jelszó</label>
         <input id="loginPassword" class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none rounded-t-lg" placeholder="••••••••" type="password" value="admin123"/>
       </div>
       <button class="w-full py-3.5 bg-primary text-white font-headline font-bold uppercase tracking-widest text-sm rounded-md hover:bg-primary-container transition-all" onclick="login()">
-        Bejelentkezes
+        Bejelentkezés
       </button>
-      <p id="loginError" class="text-error text-xs text-center hidden">Hibas email vagy jelszo!</p>
+      <p id="loginError" class="text-error text-xs text-center hidden">Hibás email vagy jelszó!</p>
     </div>
   </div>
 </div>
@@ -69,23 +69,23 @@ tailwind.config = {
     </div>
     <nav class="flex-1 p-3 md:p-4 space-y-1 overflow-y-auto">
       <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg bg-white/10 text-secondary-fixed-dim text-sm font-medium" href="#" onclick="showSection('dashboard')">
-        <span class="material-symbols-outlined text-[20px]">dashboard</span> Vezerlopult
+        <span class="material-symbols-outlined text-[20px]">dashboard</span> Vezérlőpult
       </a>
       <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('properties')">
         <span class="material-symbols-outlined text-[20px]">apartment</span> Ingatlanok
       </a>
       <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('clients')">
-        <span class="material-symbols-outlined text-[20px]">people</span> Ugyfelek
+        <span class="material-symbols-outlined text-[20px]">people</span> Ügyfelek
       </a>
       <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('messages')">
-        <span class="material-symbols-outlined text-[20px]">mail</span> Uzenetek
+        <span class="material-symbols-outlined text-[20px]">mail</span> Üzenetek
         <span class="ml-auto bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
       </a>
       <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('analytics')">
-        <span class="material-symbols-outlined text-[20px]">analytics</span> Statisztikak
+        <span class="material-symbols-outlined text-[20px]">analytics</span> Statisztikák
       </a>
       <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('settings')">
-        <span class="material-symbols-outlined text-[20px]">settings</span> Beallitasok
+        <span class="material-symbols-outlined text-[20px]">settings</span> Beállítások
       </a>
     </nav>
     <div class="p-3 md:p-4 border-t border-white/10">
@@ -97,7 +97,7 @@ tailwind.config = {
         </div>
       </div>
       <button class="flex items-center gap-2 px-3 md:px-4 py-2 text-white/50 hover:text-white text-xs mt-2 transition-colors w-full" onclick="logout()">
-        <span class="material-symbols-outlined text-[18px]">logout</span> Kijelentkezes
+        <span class="material-symbols-outlined text-[18px]">logout</span> Kijelentkezés
       </button>
     </div>
   </aside>
@@ -108,7 +108,7 @@ tailwind.config = {
     <header class="flex items-center justify-between px-4 md:px-8 py-3 md:py-4 bg-surface-container-lowest border-b border-outline-variant/10 sticky top-0 z-40">
       <div class="flex items-center gap-3">
         <span class="material-symbols-outlined md:hidden cursor-pointer text-on-surface-variant" onclick="toggleSidebar()">menu</span>
-        <h1 class="font-headline text-lg md:text-xl font-bold" id="sectionTitle">Vezerlopult</h1>
+        <h1 class="font-headline text-lg md:text-xl font-bold" id="sectionTitle">Vezérlőpult</h1>
       </div>
       <div class="flex items-center gap-2 md:gap-4">
         <button class="relative p-2 hover:bg-surface-container-high rounded-lg transition-colors">
@@ -131,7 +131,7 @@ tailwind.config = {
             <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+12%</span>
           </div>
           <div class="text-xl md:text-2xl font-headline font-bold text-primary">2,847</div>
-          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Osszes ingatlan</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Összes ingatlan</div>
         </div>
         <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
           <div class="flex items-center justify-between mb-2 md:mb-3">
@@ -139,7 +139,7 @@ tailwind.config = {
             <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+8%</span>
           </div>
           <div class="text-xl md:text-2xl font-headline font-bold text-primary">1,234</div>
-          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Aktiv ugyfel</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Aktív ügyfél</div>
         </div>
         <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
           <div class="flex items-center justify-between mb-2 md:mb-3">
@@ -147,7 +147,7 @@ tailwind.config = {
             <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+24%</span>
           </div>
           <div class="text-xl md:text-2xl font-headline font-bold text-primary">186</div>
-          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Lezart ugylet (ho)</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Lezárt ügylet (hó)</div>
         </div>
         <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
           <div class="flex items-center justify-between mb-2 md:mb-3">
@@ -164,41 +164,41 @@ tailwind.config = {
         <!-- Recent Properties -->
         <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
           <div class="p-4 md:p-6 border-b border-outline-variant/10 flex justify-between items-center">
-            <h3 class="font-headline font-bold text-sm md:text-base">Legutobb hozzaadott ingatlanok</h3>
-            <button class="text-secondary text-xs font-bold uppercase" onclick="showSection('properties')">Osszes</button>
+            <h3 class="font-headline font-bold text-sm md:text-base">Legutóbb hozzáadott ingatlanok</h3>
+            <button class="text-secondary text-xs font-bold uppercase" onclick="showSection('properties')">Összes</button>
           </div>
           <div class="divide-y divide-outline-variant/10">
             <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
               <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt=""/>
               <div class="min-w-0 flex-1">
-                <div class="font-semibold text-sm truncate">Naphegy Panoramas Penthouse</div>
-                <div class="text-xs text-on-surface-variant">I. Kerulet - 245 M Ft</div>
+                <div class="font-semibold text-sm truncate">Naphegy Panorámás Penthouse</div>
+                <div class="text-xs text-on-surface-variant">I. Kerület - 245 M Ft</div>
               </div>
-              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktiv</span>
+              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktív</span>
             </div>
             <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
               <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt=""/>
               <div class="min-w-0 flex-1">
                 <div class="font-semibold text-sm truncate">Duna-parti Loft</div>
-                <div class="text-xs text-on-surface-variant">IX. Kerulet - 158 M Ft</div>
+                <div class="text-xs text-on-surface-variant">IX. Kerület - 158 M Ft</div>
               </div>
-              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktiv</span>
+              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktív</span>
             </div>
             <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
               <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt=""/>
               <div class="min-w-0 flex-1">
-                <div class="font-semibold text-sm truncate">Polgari Lakas Andrassy ut</div>
-                <div class="text-xs text-on-surface-variant">VI. Kerulet - 310 M Ft</div>
+                <div class="font-semibold text-sm truncate">Polgári Lakás Andrássy út</div>
+                <div class="text-xs text-on-surface-variant">VI. Kerület - 310 M Ft</div>
               </div>
-              <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-full flex-shrink-0">Fuggoben</span>
+              <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-full flex-shrink-0">Függőben</span>
             </div>
             <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
               <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt=""/>
               <div class="min-w-0 flex-1">
-                <div class="font-semibold text-sm truncate">Csaladi Haz Budakeszi</div>
-                <div class="text-xs text-on-surface-variant">II/A Kerulet - 189 M Ft</div>
+                <div class="font-semibold text-sm truncate">Családi Ház Budakeszi</div>
+                <div class="text-xs text-on-surface-variant">II/A Kerület - 189 M Ft</div>
               </div>
-              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktiv</span>
+              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktív</span>
             </div>
           </div>
         </div>
@@ -207,19 +207,19 @@ tailwind.config = {
         <div class="space-y-4 md:space-y-6">
           <!-- Quick Actions -->
           <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
-            <h3 class="font-headline font-bold text-sm md:text-base mb-4">Gyors muveletek</h3>
+            <h3 class="font-headline font-bold text-sm md:text-base mb-4">Gyors műveletek</h3>
             <div class="grid grid-cols-2 gap-2 md:gap-3">
               <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
                 <span class="material-symbols-outlined text-primary">add_home</span>
-                <span class="text-[11px] font-semibold text-center">Uj ingatlan</span>
+                <span class="text-[11px] font-semibold text-center">Új ingatlan</span>
               </button>
               <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
                 <span class="material-symbols-outlined text-primary">person_add</span>
-                <span class="text-[11px] font-semibold text-center">Uj ugyfel</span>
+                <span class="text-[11px] font-semibold text-center">Új ügyfél</span>
               </button>
               <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
                 <span class="material-symbols-outlined text-primary">calendar_month</span>
-                <span class="text-[11px] font-semibold text-center">Idopont</span>
+                <span class="text-[11px] font-semibold text-center">Időpont</span>
               </button>
               <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
                 <span class="material-symbols-outlined text-primary">bar_chart</span>
@@ -231,7 +231,7 @@ tailwind.config = {
           <!-- Recent Messages -->
           <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
             <div class="p-4 md:p-6 border-b border-outline-variant/10 flex justify-between items-center">
-              <h3 class="font-headline font-bold text-sm md:text-base">Uj uzenetek</h3>
+              <h3 class="font-headline font-bold text-sm md:text-base">Új üzenetek</h3>
               <span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
             </div>
             <div class="divide-y divide-outline-variant/10">
@@ -240,7 +240,7 @@ tailwind.config = {
                   <span class="font-semibold text-sm">Kovacs Peter</span>
                   <span class="text-[10px] text-on-surface-variant flex-shrink-0">2 perce</span>
                 </div>
-                <p class="text-xs text-on-surface-variant truncate">Erdeklodnek a Naphegy utcai lakas irant...</p>
+                <p class="text-xs text-on-surface-variant truncate">Érdeklődnek a Naphegy utcai lakás iránt...</p>
               </div>
               <div class="p-3 md:p-4 hover:bg-surface-container-low transition-colors">
                 <div class="flex justify-between items-start mb-1">
@@ -252,9 +252,9 @@ tailwind.config = {
               <div class="p-3 md:p-4 hover:bg-surface-container-low transition-colors">
                 <div class="flex justify-between items-start mb-1">
                   <span class="font-semibold text-sm">Toth Gabor</span>
-                  <span class="text-[10px] text-on-surface-variant flex-shrink-0">1 oraja</span>
+                  <span class="text-[10px] text-on-surface-variant flex-shrink-0">1 órája</span>
                 </div>
-                <p class="text-xs text-on-surface-variant truncate">Szeretnek arajanlat kerni az ertekbecslesre.</p>
+                <p class="text-xs text-on-surface-variant truncate">Szeretnék árajánlatot kérni az értékbecslésre.</p>
               </div>
             </div>
           </div>
@@ -265,7 +265,7 @@ tailwind.config = {
     <!-- Properties Section -->
     <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-properties">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
-        <p class="text-on-surface-variant text-sm">2,847 ingatlan az adatbazisban</p>
+        <p class="text-on-surface-variant text-sm">2,847 ingatlan az adatbázisban</p>
         <button class="bg-primary text-white px-4 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:bg-primary-container transition-all">
           <span class="material-symbols-outlined text-[18px]">add</span> Uj ingatlan
         </button>
@@ -276,39 +276,39 @@ tailwind.config = {
           <thead>
             <tr class="border-b border-outline-variant/10">
               <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ingatlan</th>
-              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Helyszin</th>
-              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ar</th>
-              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Statusz</th>
-              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Muveletek</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Helyszín</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ár</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Státusz</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Műveletek</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-outline-variant/10">
             <tr class="hover:bg-surface-container-low transition-colors">
-              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt=""/><span class="font-semibold text-sm">Panoramas Penthouse</span></div></td>
-              <td class="p-3 md:p-4 text-sm text-on-surface-variant">I. Kerulet</td>
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt=""/><span class="font-semibold text-sm">Panorámás Penthouse</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">I. Kerület</td>
               <td class="p-3 md:p-4 text-sm font-semibold">245 M Ft</td>
-              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktiv</span></td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktív</span></td>
               <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
             </tr>
             <tr class="hover:bg-surface-container-low transition-colors">
               <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt=""/><span class="font-semibold text-sm">Duna-parti Loft</span></div></td>
-              <td class="p-3 md:p-4 text-sm text-on-surface-variant">IX. Kerulet</td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">IX. Kerület</td>
               <td class="p-3 md:p-4 text-sm font-semibold">158 M Ft</td>
-              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktiv</span></td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktív</span></td>
               <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
             </tr>
             <tr class="hover:bg-surface-container-low transition-colors">
-              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt=""/><span class="font-semibold text-sm">Polgari Lakas</span></div></td>
-              <td class="p-3 md:p-4 text-sm text-on-surface-variant">VI. Kerulet</td>
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt=""/><span class="font-semibold text-sm">Polgári Lakás</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">VI. Kerület</td>
               <td class="p-3 md:p-4 text-sm font-semibold">310 M Ft</td>
-              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-full">Fuggoben</span></td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-full">Függőben</span></td>
               <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
             </tr>
             <tr class="hover:bg-surface-container-low transition-colors">
-              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt=""/><span class="font-semibold text-sm">Csaladi Haz</span></div></td>
-              <td class="p-3 md:p-4 text-sm text-on-surface-variant">II/A Kerulet</td>
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt=""/><span class="font-semibold text-sm">Családi Ház</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">II/A Kerület</td>
               <td class="p-3 md:p-4 text-sm font-semibold">189 M Ft</td>
-              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktiv</span></td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktív</span></td>
               <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
             </tr>
           </tbody>
@@ -319,7 +319,7 @@ tailwind.config = {
     <!-- Clients Section -->
     <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-clients">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
-        <p class="text-on-surface-variant text-sm">1,234 ugyfel az adatbazisban</p>
+        <p class="text-on-surface-variant text-sm">1,234 ügyfél az adatbázisban</p>
         <button class="bg-primary text-white px-4 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider flex items-center gap-2">
           <span class="material-symbols-outlined text-[18px]">person_add</span> Uj ugyfel
         </button>
@@ -329,7 +329,7 @@ tailwind.config = {
           <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold flex-shrink-0">KP</div>
           <div class="min-w-0">
             <div class="font-semibold text-sm truncate">Kovacs Peter</div>
-            <div class="text-xs text-on-surface-variant">Vevo - 3 erdeklodes</div>
+            <div class="text-xs text-on-surface-variant">Vevő - 3 érdeklődés</div>
           </div>
           <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
         </div>
@@ -337,7 +337,7 @@ tailwind.config = {
           <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold flex-shrink-0">NA</div>
           <div class="min-w-0">
             <div class="font-semibold text-sm truncate">Nagy Anna</div>
-            <div class="text-xs text-on-surface-variant">Elado - 2 ingatlan</div>
+            <div class="text-xs text-on-surface-variant">Eladó - 2 ingatlan</div>
           </div>
           <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
         </div>
@@ -345,7 +345,7 @@ tailwind.config = {
           <div class="w-12 h-12 rounded-full bg-tertiary-fixed/30 flex items-center justify-center text-tertiary font-bold flex-shrink-0">TG</div>
           <div class="min-w-0">
             <div class="font-semibold text-sm truncate">Toth Gabor</div>
-            <div class="text-xs text-on-surface-variant">Vevo - Ertekbecsles</div>
+            <div class="text-xs text-on-surface-variant">Vevő - Értékbecslés</div>
           </div>
           <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
         </div>
@@ -353,7 +353,7 @@ tailwind.config = {
           <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold flex-shrink-0">SJ</div>
           <div class="min-w-0">
             <div class="font-semibold text-sm truncate">Szabo Julia</div>
-            <div class="text-xs text-on-surface-variant">Berlo - 1 ingatlan</div>
+            <div class="text-xs text-on-surface-variant">Bérlő - 1 ingatlan</div>
           </div>
           <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
         </div>
@@ -361,7 +361,7 @@ tailwind.config = {
           <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold flex-shrink-0">FM</div>
           <div class="min-w-0">
             <div class="font-semibold text-sm truncate">Farkas Miklos</div>
-            <div class="text-xs text-on-surface-variant">Vevo - Premium</div>
+            <div class="text-xs text-on-surface-variant">Vevő - Prémium</div>
           </div>
           <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
         </div>
@@ -369,7 +369,7 @@ tailwind.config = {
           <div class="w-12 h-12 rounded-full bg-tertiary-fixed/30 flex items-center justify-center text-tertiary font-bold flex-shrink-0">VE</div>
           <div class="min-w-0">
             <div class="font-semibold text-sm truncate">Varga Eszter</div>
-            <div class="text-xs text-on-surface-variant">Elado - 1 ingatlan</div>
+            <div class="text-xs text-on-surface-variant">Eladó - 1 ingatlan</div>
           </div>
           <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
         </div>
@@ -391,7 +391,7 @@ tailwind.config = {
               </div>
               <div class="w-2.5 h-2.5 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
             </div>
-            <p class="text-sm text-on-surface-variant ml-13 pl-[44px] md:pl-[52px]">Erdeklodnek a Naphegy utcai lakas irant. Mikor tudnank egyeztetni egy megtekintesi idopontot?</p>
+            <p class="text-sm text-on-surface-variant ml-13 pl-[44px] md:pl-[52px]">Érdeklődnek a Naphegy utcai lakás iránt. Mikor tudnank egyeztetni egy megtekintesi idopontot?</p>
           </div>
           <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer bg-primary/[0.02]">
             <div class="flex justify-between items-start mb-2">
@@ -404,7 +404,7 @@ tailwind.config = {
               </div>
               <div class="w-2.5 h-2.5 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
             </div>
-            <p class="text-sm text-on-surface-variant pl-[44px] md:pl-[52px]">Mikor lehetne megtekinteni az ingatlant? Szombat delelott megfelelo lenne.</p>
+            <p class="text-sm text-on-surface-variant pl-[44px] md:pl-[52px]">Mikor lehetne megtekinteni az ingatlant? Szombat délelőtt megfelelő lenne.</p>
           </div>
           <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer bg-primary/[0.02]">
             <div class="flex justify-between items-start mb-2">
@@ -412,12 +412,12 @@ tailwind.config = {
                 <div class="w-10 h-10 rounded-full bg-tertiary-fixed/30 flex items-center justify-center text-tertiary font-bold text-sm flex-shrink-0">TG</div>
                 <div>
                   <span class="font-semibold text-sm">Toth Gabor</span>
-                  <span class="text-[10px] text-on-surface-variant ml-2">1 oraja</span>
+                  <span class="text-[10px] text-on-surface-variant ml-2">1 órája</span>
                 </div>
               </div>
               <div class="w-2.5 h-2.5 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
             </div>
-            <p class="text-sm text-on-surface-variant pl-[44px] md:pl-[52px]">Szeretnek arajanlat kerni a XII. keruleti ingatlan ertekbecslesere. Koszonom!</p>
+            <p class="text-sm text-on-surface-variant pl-[44px] md:pl-[52px]">Szeretnék árajánlatot kérni a XII. kerületi ingatlan értékbecslésére. Köszönöm!</p>
           </div>
           <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer">
             <div class="flex justify-between items-start mb-2">
@@ -425,11 +425,11 @@ tailwind.config = {
                 <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">SJ</div>
                 <div>
                   <span class="font-semibold text-sm">Szabo Julia</span>
-                  <span class="text-[10px] text-on-surface-variant ml-2">3 oraja</span>
+                  <span class="text-[10px] text-on-surface-variant ml-2">3 órája</span>
                 </div>
               </div>
             </div>
-            <p class="text-sm text-on-surface-variant pl-[44px] md:pl-[52px]">Koszonom a gyors valaszt, a szerzodest alairtam es visszakuldtem.</p>
+            <p class="text-sm text-on-surface-variant pl-[44px] md:pl-[52px]">Köszönöm a gyors választ, a szerződést aláírtam és visszaküldtem.</p>
           </div>
         </div>
       </div>
@@ -441,18 +441,18 @@ tailwind.config = {
         <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
           <h3 class="font-headline font-bold mb-4">Havi forgalom</h3>
           <div class="space-y-3">
-            <div class="flex justify-between items-center"><span class="text-sm">Januar</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-primary h-3 rounded-full" style="width:65%"></div></div><span class="text-sm font-bold">2.8 Mrd</span></div>
-            <div class="flex justify-between items-center"><span class="text-sm">Februar</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-primary h-3 rounded-full" style="width:72%"></div></div><span class="text-sm font-bold">3.1 Mrd</span></div>
-            <div class="flex justify-between items-center"><span class="text-sm">Marcius</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-secondary h-3 rounded-full" style="width:85%"></div></div><span class="text-sm font-bold">3.7 Mrd</span></div>
-            <div class="flex justify-between items-center"><span class="text-sm">Aprilis</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-secondary-fixed-dim h-3 rounded-full" style="width:95%"></div></div><span class="text-sm font-bold">4.2 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Január</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-primary h-3 rounded-full" style="width:65%"></div></div><span class="text-sm font-bold">2.8 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Február</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-primary h-3 rounded-full" style="width:72%"></div></div><span class="text-sm font-bold">3.1 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Március</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-secondary h-3 rounded-full" style="width:85%"></div></div><span class="text-sm font-bold">3.7 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Április</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-secondary-fixed-dim h-3 rounded-full" style="width:95%"></div></div><span class="text-sm font-bold">4.2 Mrd</span></div>
           </div>
         </div>
         <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
-          <h3 class="font-headline font-bold mb-4">Ingatlan tipusok</h3>
+          <h3 class="font-headline font-bold mb-4">Ingatlan típusok</h3>
           <div class="space-y-4">
-            <div class="flex items-center justify-between"><span class="text-sm">Lakas</span><span class="text-sm font-bold">1,847 (65%)</span></div>
+            <div class="flex items-center justify-between"><span class="text-sm">Lakás</span><span class="text-sm font-bold">1,847 (65%)</span></div>
             <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-primary h-2 rounded-full" style="width:65%"></div></div>
-            <div class="flex items-center justify-between"><span class="text-sm">Haz</span><span class="text-sm font-bold">624 (22%)</span></div>
+            <div class="flex items-center justify-between"><span class="text-sm">Ház</span><span class="text-sm font-bold">624 (22%)</span></div>
             <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-secondary h-2 rounded-full" style="width:22%"></div></div>
             <div class="flex items-center justify-between"><span class="text-sm">Telek</span><span class="text-sm font-bold">245 (9%)</span></div>
             <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-secondary-fixed-dim h-2 rounded-full" style="width:9%"></div></div>
@@ -467,10 +467,10 @@ tailwind.config = {
     <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-settings">
       <div class="max-w-2xl space-y-6">
         <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
-          <h3 class="font-headline font-bold mb-4">Altalanos beallitasok</h3>
+          <h3 class="font-headline font-bold mb-4">Általános beállítások</h3>
           <div class="space-y-4">
             <div class="space-y-2">
-              <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Cegnev</label>
+              <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Cégnév</label>
               <input class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" value="Kulcs Ingatlan Kft."/>
             </div>
             <div class="space-y-2">
@@ -484,18 +484,18 @@ tailwind.config = {
           </div>
         </div>
         <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
-          <h3 class="font-headline font-bold mb-4">Ertesitesek</h3>
+          <h3 class="font-headline font-bold mb-4">Értesítések</h3>
           <div class="space-y-3">
             <label class="flex items-center justify-between cursor-pointer">
-              <span class="text-sm">Email ertesitesek uj erdeklodesrol</span>
+              <span class="text-sm">Email értesítések új érdeklődésről</span>
               <input class="w-10 h-5 rounded-full appearance-none bg-outline-variant checked:bg-secondary transition-colors cursor-pointer relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:rounded-full after:bg-white after:transition-transform checked:after:translate-x-5" type="checkbox" checked/>
             </label>
             <label class="flex items-center justify-between cursor-pointer">
-              <span class="text-sm">Push ertesites uj uzenetrol</span>
+              <span class="text-sm">Push értesítés új üzenetről</span>
               <input class="w-10 h-5 rounded-full appearance-none bg-outline-variant checked:bg-secondary transition-colors cursor-pointer relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:rounded-full after:bg-white after:transition-transform checked:after:translate-x-5" type="checkbox" checked/>
             </label>
             <label class="flex items-center justify-between cursor-pointer">
-              <span class="text-sm">Heti osszefoglalo riport</span>
+              <span class="text-sm">Heti összefoglaló riport</span>
               <input class="w-10 h-5 rounded-full appearance-none bg-outline-variant checked:bg-secondary transition-colors cursor-pointer relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:rounded-full after:bg-white after:transition-transform checked:after:translate-x-5" type="checkbox"/>
             </label>
           </div>
@@ -527,7 +527,7 @@ function logout() {
 
 function showSection(section) {
   const sections = ['dashboard', 'properties', 'clients', 'messages', 'analytics', 'settings'];
-  const titles = { dashboard: 'Vezerlopult', properties: 'Ingatlanok', clients: 'Ugyfelek', messages: 'Uzenetek', analytics: 'Statisztikak', settings: 'Beallitasok' };
+  const titles = { dashboard: 'Vezérlőpult', properties: 'Ingatlanok', clients: 'Ügyfelek', messages: 'Üzenetek', analytics: 'Statisztikák', settings: 'Beállítások' };
   sections.forEach(s => {
     const el = document.getElementById('section-' + s);
     if (el) el.classList.toggle('hidden', s !== section);
