@@ -4,9 +4,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Kulcs Ingatlan - Keresés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://lh3.googleusercontent.com"/>
+<link rel="dns-prefetch" href="https://cdn.tailwindcss.com"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <script>
 tailwind.config = {
   darkMode: "class",
@@ -266,7 +270,7 @@ tailwind.config = {
       <!-- Property Card 1 -->
       <div class="group relative flex flex-col bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-1">
         <div class="relative h-52 sm:h-72 overflow-hidden">
-          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt="Property"/>
+          <img loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt="Property"/>
           <div class="absolute top-4 left-4 bg-primary px-3 py-1 text-white text-[10px] font-bold uppercase tracking-widest">Kiemelt</div>
           <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#e9c176] hover:text-primary transition-all">
             <span class="material-symbols-outlined text-[20px]">favorite</span>
@@ -302,7 +306,7 @@ tailwind.config = {
       <!-- Property Card 2 -->
       <div class="group relative flex flex-col bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-1">
         <div class="relative h-52 sm:h-72 overflow-hidden">
-          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt="Property"/>
+          <img loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt="Property"/>
           <div class="absolute top-4 left-4 bg-[#775a19] px-3 py-1 text-white text-[10px] font-bold uppercase tracking-widest">Új építésű</div>
           <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#e9c176] hover:text-primary transition-all">
             <span class="material-symbols-outlined text-[20px]">favorite</span>
@@ -338,7 +342,7 @@ tailwind.config = {
       <!-- Property Card 3 -->
       <div class="group relative flex flex-col bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-1">
         <div class="relative h-52 sm:h-72 overflow-hidden">
-          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt="Property"/>
+          <img loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt="Property"/>
           <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#e9c176] hover:text-primary transition-all">
             <span class="material-symbols-outlined text-[20px]">favorite</span>
           </button>
@@ -373,7 +377,7 @@ tailwind.config = {
       <!-- Property Card 4 -->
       <div class="group relative flex flex-col bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-1">
         <div class="relative h-52 sm:h-72 overflow-hidden">
-          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt="Property"/>
+          <img loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt="Property"/>
           <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#e9c176] hover:text-primary transition-all">
             <span class="material-symbols-outlined text-[20px]">favorite</span>
           </button>
