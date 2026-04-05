@@ -119,11 +119,11 @@ tailwind.config = {
     </div>
   </div>
   <nav class="flex flex-col p-6 gap-1">
-    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="index.html">Kezdőlap</a>
+    <a class="text-[#e9c176] bg-white/10 py-3 px-4 font-headline text-sm uppercase tracking-wider rounded-lg" href="index.html">Kezdőlap</a>
     <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="kereses.html">Eladó</a>
     <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="kereses.html">Kiadó</a>
-    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="#">Szolgáltatások</a>
-    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="#">Értékbecslés</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="#szolgaltatasok">Szolgáltatások</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="#ertekbecsles">Értékbecslés</a>
   </nav>
   <div class="mt-auto p-6 border-t border-white/10">
     <a href="admin.html" class="flex items-center gap-2 text-white/60 hover:text-secondary-fixed-dim py-2 text-sm transition-colors">
@@ -164,8 +164,8 @@ tailwind.config = {
     <a class="text-[#e9c176] font-semibold font-headline tracking-tight text-sm uppercase" href="index.html">Kezdőlap</a>
     <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="kereses.html">Eladó</a>
     <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="kereses.html">Kiadó</a>
-    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="#">Szolgáltatások</a>
-    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="#">Értékbecslés</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="#szolgaltatasok">Szolgáltatások</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="#ertekbecsles">Értékbecslés</a>
   </div>
   <div class="flex items-center gap-4">
     <button class="hidden lg:block bg-secondary text-on-secondary px-6 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider hover:bg-secondary-fixed-dim transition-all active:scale-95">
@@ -356,7 +356,7 @@ tailwind.config = {
 </section>
 
 <!-- Services Bento Grid -->
-<section class="py-16 md:py-24 bg-primary text-white overflow-hidden relative">
+<section id="szolgaltatasok" class="py-16 md:py-24 bg-primary text-white overflow-hidden relative scroll-mt-20">
   <div class="container mx-auto px-4 md:px-6 relative z-10">
     <h2 class="font-headline text-2xl md:text-4xl font-extrabold mb-8 md:mb-12 tracking-tight text-center">Teljes körű <span class="text-secondary-fixed-dim">szolgáltatási csomag</span></h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
@@ -372,9 +372,9 @@ tailwind.config = {
         <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Megbízható bérlők felkutatása és folyamatos ingatlankezelés hosszú távra.</p>
         <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Részletek <span class="material-symbols-outlined">arrow_right_alt</span></a>
       </div>
-      <div class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group border border-secondary/20">
+      <div id="ertekbecsles" class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group border border-secondary/20 scroll-mt-20">
         <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">analytics</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">AI alapu értékbecslés</h3>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">AI alapú értékbecslés</h3>
         <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Valós idejű piaci adatok alapján számított pontos ingatlanérték meghatározás.</p>
         <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Indítás <span class="material-symbols-outlined">arrow_right_alt</span></a>
       </div>
