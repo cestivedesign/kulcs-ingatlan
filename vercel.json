@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/kereses", "destination": "/kereses.html" },
+    { "source": "/ingatlan/:id", "destination": "/ingatlan.html" }
+  ]
+}

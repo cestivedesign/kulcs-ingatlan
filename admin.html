@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kulcs Ingatlan - Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-surface": "#191c1d","on-tertiary": "#ffffff","error-container": "#ffdad6","secondary": "#775a19","tertiary-fixed": "#ffdea6","inverse-primary": "#b7c8de","primary-fixed-dim": "#b7c8de","on-background": "#191c1d","surface-dim": "#d8dadb","secondary-fixed-dim": "#e9c176","outline-variant": "#c4c6cd","on-surface-variant": "#44474c","surface-container": "#eceeef","primary-fixed": "#d2e4fb","error": "#ba1a1a","on-tertiary-container": "#a98d5a","primary-container": "#1a2b3c","surface-variant": "#e1e3e4","surface-bright": "#f8fafb","on-secondary": "#ffffff","on-primary-container": "#8192a7","on-tertiary-fixed-variant": "#594318","on-secondary-container": "#785a1a","tertiary-container": "#382600","secondary-fixed": "#ffdea5","on-secondary-fixed-variant": "#5d4201","surface-tint": "#4f6073","primary": "#041627","on-primary-fixed-variant": "#38485a","inverse-on-surface": "#eff1f2","secondary-container": "#fed488","background": "#f8fafb","outline": "#74777d","on-tertiary-fixed": "#271900","on-error-container": "#93000a","on-primary-fixed": "#0b1d2d","tertiary-fixed-dim": "#e2c28b","surface-container-low": "#f2f4f5","surface-container-highest": "#e1e3e4","inverse-surface": "#2e3132","on-secondary-fixed": "#261900","surface-container-lowest": "#ffffff","surface": "#f8fafb","tertiary": "#1e1300","on-error": "#ffffff","on-primary": "#ffffff","surface-container-high": "#e6e8e9"
+      },
+      borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+      fontFamily: { headline: ["Manrope"], body: ["Inter"], label: ["Inter"] }
+    },
+  }
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(4, 22, 39, 0.9); }
+.sidebar-mobile { transform: translateX(-100%); transition: transform 0.3s ease; }
+.sidebar-mobile.open { transform: translateX(0); }
+.sidebar-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.sidebar-overlay.open { opacity: 1; pointer-events: auto; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-fixed-dim/30">
+
+<!-- Login Screen -->
+<div id="loginScreen" class="fixed inset-0 z-[100] bg-primary flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-2xl p-6 md:p-10 w-full max-w-md shadow-2xl">
+    <div class="text-center mb-8">
+      <h1 class="font-headline text-2xl font-bold text-primary uppercase tracking-widest mb-2">Kulcs Ingatlan</h1>
+      <p class="text-on-surface-variant text-sm">Admin felulet bejelentkezes</p>
+    </div>
+    <div class="space-y-5">
+      <div class="space-y-2">
+        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Email</label>
+        <input id="loginEmail" class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none rounded-t-lg" placeholder="admin@kulcsingatlan.hu" type="email" value="admin@kulcsingatlan.hu"/>
+      </div>
+      <div class="space-y-2">
+        <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Jelszo</label>
+        <input id="loginPassword" class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none rounded-t-lg" placeholder="••••••••" type="password" value="admin123"/>
+      </div>
+      <button class="w-full py-3.5 bg-primary text-white font-headline font-bold uppercase tracking-widest text-sm rounded-md hover:bg-primary-container transition-all" onclick="login()">
+        Bejelentkezes
+      </button>
+      <p id="loginError" class="text-error text-xs text-center hidden">Hibas email vagy jelszo!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar Overlay (Mobile) -->
+<div class="sidebar-overlay fixed inset-0 bg-black/50 z-[55] md:hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- Admin Layout -->
+<div class="flex min-h-screen" id="adminLayout" style="display:none;">
+  <!-- Sidebar -->
+  <aside class="sidebar-mobile md:transform-none fixed md:sticky top-0 left-0 w-64 h-full md:h-screen bg-primary text-white z-[60] md:z-auto flex flex-col" id="sidebar">
+    <div class="p-4 md:p-6 border-b border-white/10 flex items-center justify-between">
+      <a href="index.html" class="font-headline font-bold text-sm md:text-base uppercase tracking-widest hover:text-secondary-fixed-dim transition-colors">Kulcs Ingatlan</a>
+      <span class="material-symbols-outlined md:hidden cursor-pointer" onclick="toggleSidebar()">close</span>
+    </div>
+    <nav class="flex-1 p-3 md:p-4 space-y-1 overflow-y-auto">
+      <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg bg-white/10 text-secondary-fixed-dim text-sm font-medium" href="#" onclick="showSection('dashboard')">
+        <span class="material-symbols-outlined text-[20px]">dashboard</span> Vezerlopult
+      </a>
+      <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('properties')">
+        <span class="material-symbols-outlined text-[20px]">apartment</span> Ingatlanok
+      </a>
+      <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('clients')">
+        <span class="material-symbols-outlined text-[20px]">people</span> Ugyfelek
+      </a>
+      <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('messages')">
+        <span class="material-symbols-outlined text-[20px]">mail</span> Uzenetek
+        <span class="ml-auto bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
+      </a>
+      <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('analytics')">
+        <span class="material-symbols-outlined text-[20px]">analytics</span> Statisztikak
+      </a>
+      <a class="flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors" href="#" onclick="showSection('settings')">
+        <span class="material-symbols-outlined text-[20px]">settings</span> Beallitasok
+      </a>
+    </nav>
+    <div class="p-3 md:p-4 border-t border-white/10">
+      <div class="flex items-center gap-3 px-3 md:px-4 py-2">
+        <div class="w-8 h-8 rounded-full bg-secondary-fixed-dim flex items-center justify-center text-primary font-bold text-sm">KI</div>
+        <div class="min-w-0">
+          <div class="text-sm font-medium truncate">Admin User</div>
+          <div class="text-[11px] text-white/50 truncate">admin@kulcsingatlan.hu</div>
+        </div>
+      </div>
+      <button class="flex items-center gap-2 px-3 md:px-4 py-2 text-white/50 hover:text-white text-xs mt-2 transition-colors w-full" onclick="logout()">
+        <span class="material-symbols-outlined text-[18px]">logout</span> Kijelentkezes
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col min-w-0">
+    <!-- Top Bar -->
+    <header class="flex items-center justify-between px-4 md:px-8 py-3 md:py-4 bg-surface-container-lowest border-b border-outline-variant/10 sticky top-0 z-40">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined md:hidden cursor-pointer text-on-surface-variant" onclick="toggleSidebar()">menu</span>
+        <h1 class="font-headline text-lg md:text-xl font-bold" id="sectionTitle">Vezerlopult</h1>
+      </div>
+      <div class="flex items-center gap-2 md:gap-4">
+        <button class="relative p-2 hover:bg-surface-container-high rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+          <div class="absolute top-1 right-1 w-2.5 h-2.5 bg-error rounded-full"></div>
+        </button>
+        <a href="index.html" class="hidden md:flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[18px]">open_in_new</span> Weboldal
+        </a>
+      </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto" id="section-dashboard">
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-8">
+        <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
+          <div class="flex items-center justify-between mb-2 md:mb-3">
+            <span class="material-symbols-outlined text-secondary text-xl md:text-2xl">apartment</span>
+            <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+12%</span>
+          </div>
+          <div class="text-xl md:text-2xl font-headline font-bold text-primary">2,847</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Osszes ingatlan</div>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
+          <div class="flex items-center justify-between mb-2 md:mb-3">
+            <span class="material-symbols-outlined text-secondary text-xl md:text-2xl">people</span>
+            <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+8%</span>
+          </div>
+          <div class="text-xl md:text-2xl font-headline font-bold text-primary">1,234</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Aktiv ugyfel</div>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
+          <div class="flex items-center justify-between mb-2 md:mb-3">
+            <span class="material-symbols-outlined text-secondary text-xl md:text-2xl">handshake</span>
+            <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+24%</span>
+          </div>
+          <div class="text-xl md:text-2xl font-headline font-bold text-primary">186</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Lezart ugylet (ho)</div>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-6 rounded-xl border border-outline-variant/10">
+          <div class="flex items-center justify-between mb-2 md:mb-3">
+            <span class="material-symbols-outlined text-secondary text-xl md:text-2xl">payments</span>
+            <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+18%</span>
+          </div>
+          <div class="text-xl md:text-2xl font-headline font-bold text-primary">4.2 Mrd</div>
+          <div class="text-[11px] md:text-xs text-on-surface-variant mt-1">Havi forgalom (Ft)</div>
+        </div>
+      </div>
+
+      <!-- Recent Activity & Quick Actions -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+        <!-- Recent Properties -->
+        <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
+          <div class="p-4 md:p-6 border-b border-outline-variant/10 flex justify-between items-center">
+            <h3 class="font-headline font-bold text-sm md:text-base">Legutobb hozzaadott ingatlanok</h3>
+            <button class="text-secondary text-xs font-bold uppercase" onclick="showSection('properties')">Osszes</button>
+          </div>
+          <div class="divide-y divide-outline-variant/10">
+            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+              <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt=""/>
+              <div class="min-w-0 flex-1">
+                <div class="font-semibold text-sm truncate">Naphegy Panoramas Penthouse</div>
+                <div class="text-xs text-on-surface-variant">I. Kerulet - 245 M Ft</div>
+              </div>
+              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktiv</span>
+            </div>
+            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+              <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt=""/>
+              <div class="min-w-0 flex-1">
+                <div class="font-semibold text-sm truncate">Duna-parti Loft</div>
+                <div class="text-xs text-on-surface-variant">IX. Kerulet - 158 M Ft</div>
+              </div>
+              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktiv</span>
+            </div>
+            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+              <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt=""/>
+              <div class="min-w-0 flex-1">
+                <div class="font-semibold text-sm truncate">Polgari Lakas Andrassy ut</div>
+                <div class="text-xs text-on-surface-variant">VI. Kerulet - 310 M Ft</div>
+              </div>
+              <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-full flex-shrink-0">Fuggoben</span>
+            </div>
+            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+              <img class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt=""/>
+              <div class="min-w-0 flex-1">
+                <div class="font-semibold text-sm truncate">Csaladi Haz Budakeszi</div>
+                <div class="text-xs text-on-surface-variant">II/A Kerulet - 189 M Ft</div>
+              </div>
+              <span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full flex-shrink-0">Aktiv</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Messages -->
+        <div class="space-y-4 md:space-y-6">
+          <!-- Quick Actions -->
+          <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
+            <h3 class="font-headline font-bold text-sm md:text-base mb-4">Gyors muveletek</h3>
+            <div class="grid grid-cols-2 gap-2 md:gap-3">
+              <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
+                <span class="material-symbols-outlined text-primary">add_home</span>
+                <span class="text-[11px] font-semibold text-center">Uj ingatlan</span>
+              </button>
+              <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
+                <span class="material-symbols-outlined text-primary">person_add</span>
+                <span class="text-[11px] font-semibold text-center">Uj ugyfel</span>
+              </button>
+              <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
+                <span class="material-symbols-outlined text-primary">calendar_month</span>
+                <span class="text-[11px] font-semibold text-center">Idopont</span>
+              </button>
+              <button class="flex flex-col items-center gap-2 p-3 md:p-4 bg-primary/5 rounded-xl hover:bg-primary/10 transition-colors">
+                <span class="material-symbols-outlined text-primary">bar_chart</span>
+                <span class="text-[11px] font-semibold text-center">Riport</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Messages -->
+          <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
+            <div class="p-4 md:p-6 border-b border-outline-variant/10 flex justify-between items-center">
+              <h3 class="font-headline font-bold text-sm md:text-base">Uj uzenetek</h3>
+              <span class="bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
+            </div>
+            <div class="divide-y divide-outline-variant/10">
+              <div class="p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-semibold text-sm">Kovacs Peter</span>
+                  <span class="text-[10px] text-on-surface-variant flex-shrink-0">2 perce</span>
+                </div>
+                <p class="text-xs text-on-surface-variant truncate">Erdeklodnek a Naphegy utcai lakas irant...</p>
+              </div>
+              <div class="p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-semibold text-sm">Nagy Anna</span>
+                  <span class="text-[10px] text-on-surface-variant flex-shrink-0">15 perce</span>
+                </div>
+                <p class="text-xs text-on-surface-variant truncate">Mikor lehetne megtekinteni az ingatlant?</p>
+              </div>
+              <div class="p-3 md:p-4 hover:bg-surface-container-low transition-colors">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-semibold text-sm">Toth Gabor</span>
+                  <span class="text-[10px] text-on-surface-variant flex-shrink-0">1 oraja</span>
+                </div>
+                <p class="text-xs text-on-surface-variant truncate">Szeretnek arajanlat kerni az ertekbecslesre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Properties Section -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-properties">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+        <p class="text-on-surface-variant text-sm">2,847 ingatlan az adatbazisban</p>
+        <button class="bg-primary text-white px-4 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:bg-primary-container transition-all">
+          <span class="material-symbols-outlined text-[18px]">add</span> Uj ingatlan
+        </button>
+      </div>
+      <!-- Properties Table -->
+      <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-x-auto">
+        <table class="w-full min-w-[600px]">
+          <thead>
+            <tr class="border-b border-outline-variant/10">
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ingatlan</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Helyszin</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ar</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Statusz</th>
+              <th class="text-left p-3 md:p-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Muveletek</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/10">
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUgvt6aIHTeKD37sraGN5NdNPx1_XU09pz6QM8UqxvLr31-Kd-OoKa75bIny_u8WZSklTAYWwqp8A8JI2gkH6XxPzOVSZlCDAyHntCb2epqgbS5RKpR_Ky6g4sfEQqZsyfrLB_RafBTuDXYPOzs4klkTlVbr1gopiNqK4dP6EcY4geTkHI8QAnvzASK22FyB_t7mySnxuaHtapUjGeoEzJGTmqDBxtWMmXVhThOpMFiNa1UwVuYJwa98kuZBRhw-BHfHAWjXFCChc" alt=""/><span class="font-semibold text-sm">Panoramas Penthouse</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">I. Kerulet</td>
+              <td class="p-3 md:p-4 text-sm font-semibold">245 M Ft</td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktiv</span></td>
+              <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
+            </tr>
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT4Zg340KzqieH3vBuaWa801v_O45LVtQb_igcpgjQFILxnDxYcjxZmhLZ0zFQj0cNK1GnDz3RnVOKmqgoDILkLk_CqgAcYRvK9SYvh-OSQXgmTUSzwOLC5hlTOycmPYYN3X3pLB7AquZ6S4CMN8pKk7eXlxiU5k4W2miX96oDPzrtBkBcXgAg79n3J_DKQYRQKGLDc230MAHb7LYsp5O771OgSaC0oEdmCkybVWfHLifZ0Phk3rhdT5VB7VXf9DZ3muHtUyXnTPc" alt=""/><span class="font-semibold text-sm">Duna-parti Loft</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">IX. Kerulet</td>
+              <td class="p-3 md:p-4 text-sm font-semibold">158 M Ft</td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktiv</span></td>
+              <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
+            </tr>
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt=""/><span class="font-semibold text-sm">Polgari Lakas</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">VI. Kerulet</td>
+              <td class="p-3 md:p-4 text-sm font-semibold">310 M Ft</td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-1 rounded-full">Fuggoben</span></td>
+              <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
+            </tr>
+            <tr class="hover:bg-surface-container-low transition-colors">
+              <td class="p-3 md:p-4"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM" alt=""/><span class="font-semibold text-sm">Csaladi Haz</span></div></td>
+              <td class="p-3 md:p-4 text-sm text-on-surface-variant">II/A Kerulet</td>
+              <td class="p-3 md:p-4 text-sm font-semibold">189 M Ft</td>
+              <td class="p-3 md:p-4"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">Aktiv</span></td>
+              <td class="p-3 md:p-4"><div class="flex gap-1"><button class="p-1.5 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined text-[18px]">edit</span></button><button class="p-1.5 hover:bg-error-container rounded-lg"><span class="material-symbols-outlined text-[18px] text-error">delete</span></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Clients Section -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-clients">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+        <p class="text-on-surface-variant text-sm">1,234 ugyfel az adatbazisban</p>
+        <button class="bg-primary text-white px-4 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">person_add</span> Uj ugyfel
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold flex-shrink-0">KP</div>
+          <div class="min-w-0">
+            <div class="font-semibold text-sm truncate">Kovacs Peter</div>
+            <div class="text-xs text-on-surface-variant">Vevo - 3 erdeklodes</div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold flex-shrink-0">NA</div>
+          <div class="min-w-0">
+            <div class="font-semibold text-sm truncate">Nagy Anna</div>
+            <div class="text-xs text-on-surface-variant">Elado - 2 ingatlan</div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed/30 flex items-center justify-center text-tertiary font-bold flex-shrink-0">TG</div>
+          <div class="min-w-0">
+            <div class="font-semibold text-sm truncate">Toth Gabor</div>
+            <div class="text-xs text-on-surface-variant">Vevo - Ertekbecsles</div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold flex-shrink-0">SJ</div>
+          <div class="min-w-0">
+            <div class="font-semibold text-sm truncate">Szabo Julia</div>
+            <div class="text-xs text-on-surface-variant">Berlo - 1 ingatlan</div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold flex-shrink-0">FM</div>
+          <div class="min-w-0">
+            <div class="font-semibold text-sm truncate">Farkas Miklos</div>
+            <div class="text-xs text-on-surface-variant">Vevo - Premium</div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
+        </div>
+        <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed/30 flex items-center justify-center text-tertiary font-bold flex-shrink-0">VE</div>
+          <div class="min-w-0">
+            <div class="font-semibold text-sm truncate">Varga Eszter</div>
+            <div class="text-xs text-on-surface-variant">Elado - 1 ingatlan</div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto flex-shrink-0 cursor-pointer hover:text-primary">more_vert</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- Messages Section -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-messages">
+      <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
+        <div class="divide-y divide-outline-variant/10">
+          <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer bg-primary/[0.02]">
+            <div class="flex justify-between items-start mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">KP</div>
+                <div>
+                  <span class="font-semibold text-sm">Kovacs Peter</span>
+                  <span class="text-[10px] text-on-surface-variant ml-2">2 perce</span>
+                </div>
+              </div>
+              <div class="w-2.5 h-2.5 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
+            </div>
+            <p class="text-sm text-on-surface-variant ml-13 pl-[52px]">Erdeklodnek a Naphegy utcai lakas irant. Mikor tudnank egyeztetni egy megtekintesi idopontot?</p>
+          </div>
+          <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer bg-primary/[0.02]">
+            <div class="flex justify-between items-start mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-sm flex-shrink-0">NA</div>
+                <div>
+                  <span class="font-semibold text-sm">Nagy Anna</span>
+                  <span class="text-[10px] text-on-surface-variant ml-2">15 perce</span>
+                </div>
+              </div>
+              <div class="w-2.5 h-2.5 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
+            </div>
+            <p class="text-sm text-on-surface-variant pl-[52px]">Mikor lehetne megtekinteni az ingatlant? Szombat delelott megfelelo lenne.</p>
+          </div>
+          <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer bg-primary/[0.02]">
+            <div class="flex justify-between items-start mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-tertiary-fixed/30 flex items-center justify-center text-tertiary font-bold text-sm flex-shrink-0">TG</div>
+                <div>
+                  <span class="font-semibold text-sm">Toth Gabor</span>
+                  <span class="text-[10px] text-on-surface-variant ml-2">1 oraja</span>
+                </div>
+              </div>
+              <div class="w-2.5 h-2.5 bg-secondary rounded-full flex-shrink-0 mt-1"></div>
+            </div>
+            <p class="text-sm text-on-surface-variant pl-[52px]">Szeretnek arajanlat kerni a XII. keruleti ingatlan ertekbecslesere. Koszonom!</p>
+          </div>
+          <div class="p-4 md:p-6 hover:bg-surface-container-low transition-colors cursor-pointer">
+            <div class="flex justify-between items-start mb-2">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">SJ</div>
+                <div>
+                  <span class="font-semibold text-sm">Szabo Julia</span>
+                  <span class="text-[10px] text-on-surface-variant ml-2">3 oraja</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-on-surface-variant pl-[52px]">Koszonom a gyors valaszt, a szerzodest alairtam es visszakuldtem.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Analytics Section -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-analytics">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
+          <h3 class="font-headline font-bold mb-4">Havi forgalom</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center"><span class="text-sm">Januar</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-primary h-3 rounded-full" style="width:65%"></div></div><span class="text-sm font-bold">2.8 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Februar</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-primary h-3 rounded-full" style="width:72%"></div></div><span class="text-sm font-bold">3.1 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Marcius</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-secondary h-3 rounded-full" style="width:85%"></div></div><span class="text-sm font-bold">3.7 Mrd</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm">Aprilis</span><div class="flex-1 mx-4 bg-surface-container-high rounded-full h-3"><div class="bg-secondary-fixed-dim h-3 rounded-full" style="width:95%"></div></div><span class="text-sm font-bold">4.2 Mrd</span></div>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
+          <h3 class="font-headline font-bold mb-4">Ingatlan tipusok</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between"><span class="text-sm">Lakas</span><span class="text-sm font-bold">1,847 (65%)</span></div>
+            <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-primary h-2 rounded-full" style="width:65%"></div></div>
+            <div class="flex items-center justify-between"><span class="text-sm">Haz</span><span class="text-sm font-bold">624 (22%)</span></div>
+            <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-secondary h-2 rounded-full" style="width:22%"></div></div>
+            <div class="flex items-center justify-between"><span class="text-sm">Telek</span><span class="text-sm font-bold">245 (9%)</span></div>
+            <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-secondary-fixed-dim h-2 rounded-full" style="width:9%"></div></div>
+            <div class="flex items-center justify-between"><span class="text-sm">Iroda</span><span class="text-sm font-bold">131 (4%)</span></div>
+            <div class="w-full bg-surface-container-high rounded-full h-2"><div class="bg-outline h-2 rounded-full" style="width:4%"></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Settings Section -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto hidden" id="section-settings">
+      <div class="max-w-2xl space-y-6">
+        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
+          <h3 class="font-headline font-bold mb-4">Altalanos beallitasok</h3>
+          <div class="space-y-4">
+            <div class="space-y-2">
+              <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Cegnev</label>
+              <input class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" value="Kulcs Ingatlan Kft."/>
+            </div>
+            <div class="space-y-2">
+              <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Email</label>
+              <input class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" value="info@kulcsingatlan.hu"/>
+            </div>
+            <div class="space-y-2">
+              <label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Telefon</label>
+              <input class="w-full p-3 bg-surface-container-low border-b-2 border-primary focus:border-secondary focus:ring-0 text-sm outline-none" value="+36 1 987 6543"/>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-4 md:p-6">
+          <h3 class="font-headline font-bold mb-4">Ertesitesek</h3>
+          <div class="space-y-3">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="text-sm">Email ertesitesek uj erdeklodesrol</span>
+              <input class="w-10 h-5 rounded-full appearance-none bg-outline-variant checked:bg-secondary transition-colors cursor-pointer relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:rounded-full after:bg-white after:transition-transform checked:after:translate-x-5" type="checkbox" checked/>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="text-sm">Push ertesites uj uzenetrol</span>
+              <input class="w-10 h-5 rounded-full appearance-none bg-outline-variant checked:bg-secondary transition-colors cursor-pointer relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:rounded-full after:bg-white after:transition-transform checked:after:translate-x-5" type="checkbox" checked/>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="text-sm">Heti osszefoglalo riport</span>
+              <input class="w-10 h-5 rounded-full appearance-none bg-outline-variant checked:bg-secondary transition-colors cursor-pointer relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:rounded-full after:bg-white after:transition-transform checked:after:translate-x-5" type="checkbox"/>
+            </label>
+          </div>
+        </div>
+        <button class="bg-primary text-white px-6 py-3 rounded-md font-headline font-bold text-xs uppercase tracking-wider hover:bg-primary-container transition-all">
+          Mentes
+        </button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+function login() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  if (email === 'admin@kulcsingatlan.hu' && password === 'admin123') {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminLayout').style.display = 'flex';
+  } else {
+    document.getElementById('loginError').classList.remove('hidden');
+  }
+}
+
+function logout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('adminLayout').style.display = 'none';
+}
+
+function showSection(section) {
+  const sections = ['dashboard', 'properties', 'clients', 'messages', 'analytics', 'settings'];
+  const titles = { dashboard: 'Vezerlopult', properties: 'Ingatlanok', clients: 'Ugyfelek', messages: 'Uzenetek', analytics: 'Statisztikak', settings: 'Beallitasok' };
+  sections.forEach(s => {
+    const el = document.getElementById('section-' + s);
+    if (el) el.classList.toggle('hidden', s !== section);
+  });
+  document.getElementById('sectionTitle').textContent = titles[section] || section;
+  // Update sidebar active state
+  document.querySelectorAll('#sidebar nav a').forEach((a, i) => {
+    if (sections[i] === section) {
+      a.className = 'flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg bg-white/10 text-secondary-fixed-dim text-sm font-medium';
+    } else {
+      a.className = 'flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg hover:bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors';
+    }
+  });
+  // Close mobile sidebar
+  if (window.innerWidth < 768) toggleSidebar();
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+}
+
+// Allow Enter key on login
+document.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') {
+    login();
+  }
+});
+</script>
+</body>
+</html>
