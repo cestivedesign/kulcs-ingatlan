@@ -122,8 +122,8 @@ tailwind.config = {
     <a class="text-[#e9c176] bg-white/10 py-3 px-4 font-headline text-sm uppercase tracking-wider rounded-lg" href="index.html">Kezdőlap</a>
     <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="kereses.html">Eladó</a>
     <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="kereses.html">Kiadó</a>
-    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="#szolgaltatasok">Szolgáltatások</a>
-    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="#ertekbecsles">Értékbecslés</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="szolgaltatasok.html">Szolgáltatások</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="ertekbecsles.html">Értékbecslés</a>
   </nav>
   <div class="mt-auto p-6 border-t border-white/10">
     <a href="admin.html" class="flex items-center gap-2 text-white/60 hover:text-secondary-fixed-dim py-2 text-sm transition-colors">
@@ -164,8 +164,8 @@ tailwind.config = {
     <a class="text-[#e9c176] font-semibold font-headline tracking-tight text-sm uppercase" href="index.html">Kezdőlap</a>
     <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="kereses.html">Eladó</a>
     <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="kereses.html">Kiadó</a>
-    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="#szolgaltatasok">Szolgáltatások</a>
-    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="#ertekbecsles">Értékbecslés</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="szolgaltatasok.html">Szolgáltatások</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="ertekbecsles.html">Értékbecslés</a>
   </div>
   <div class="flex items-center gap-4">
     <button class="hidden lg:block bg-secondary text-on-secondary px-6 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider hover:bg-secondary-fixed-dim transition-all active:scale-95">
@@ -190,7 +190,7 @@ tailwind.config = {
       <a href="kereses.html" class="bg-secondary text-on-secondary px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-secondary-fixed-dim transition-all active:scale-95 flex items-center justify-center gap-2">
         <span class="material-symbols-outlined">search</span> Ingatlanok böngészése
       </a>
-      <a href="#ertekbecsles" class="border-2 border-white/30 text-white px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center gap-2">
+      <a href="ertekbecsles.html" class="border-2 border-white/30 text-white px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center gap-2">
         <span class="material-symbols-outlined">analytics</span> Ingyenes értékbecslés
       </a>
     </div>
@@ -355,47 +355,150 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- Services Bento Grid -->
-<section id="szolgaltatasok" class="py-16 md:py-24 bg-primary text-white overflow-hidden relative scroll-mt-20">
-  <div class="container mx-auto px-4 md:px-6 relative z-10">
-    <h2 class="font-headline text-2xl md:text-4xl font-extrabold mb-8 md:mb-12 tracking-tight text-center">Teljes körű <span class="text-secondary-fixed-dim">szolgáltatási csomag</span></h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-      <div class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group">
-        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">home</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">Ingatlan értékesítés</h3>
-        <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Személyre szabott marketing stratégia és professzionális fotózás minden eladó ingatlanhoz.</p>
-        <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Részletek <span class="material-symbols-outlined">arrow_right_alt</span></a>
+<!-- Why Choose Us -->
+<section class="py-16 md:py-24 bg-surface-container-low">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-primary font-headline text-2xl md:text-4xl font-extrabold tracking-tight mb-3">Miért a Kulcs Ingatlan?</h2>
+      <p class="text-on-surface-variant text-sm md:text-base max-w-xl mx-auto">Több mint 15 éve segítjük ügyfeleinket a tökéletes ingatlan megtalálásában.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 text-center hover:shadow-lg transition-all">
+        <div class="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mx-auto mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">workspace_premium</span>
+        </div>
+        <h3 class="font-headline font-bold text-sm mb-2">Prémium minőség</h3>
+        <p class="text-on-surface-variant text-xs leading-relaxed">Csak gondosan válogatott, ellenőrzött ingatlanokat kínálunk portfóliónkban.</p>
       </div>
-      <div class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group">
-        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">key</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">Bérbeadás management</h3>
-        <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Megbízható bérlők felkutatása és folyamatos ingatlankezelés hosszú távra.</p>
-        <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Részletek <span class="material-symbols-outlined">arrow_right_alt</span></a>
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 text-center hover:shadow-lg transition-all">
+        <div class="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mx-auto mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">handshake</span>
+        </div>
+        <h3 class="font-headline font-bold text-sm mb-2">Személyes tanácsadás</h3>
+        <p class="text-on-surface-variant text-xs leading-relaxed">Dedikált tanácsadó kíséri végig az egész folyamatot, a kereséstől az átadásig.</p>
       </div>
-      <div id="ertekbecsles" class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group border border-secondary/20 scroll-mt-20">
-        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">analytics</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">AI alapú értékbecslés</h3>
-        <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Valós idejű piaci adatok alapján számított pontos ingatlanérték meghatározás.</p>
-        <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Indítás <span class="material-symbols-outlined">arrow_right_alt</span></a>
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 text-center hover:shadow-lg transition-all">
+        <div class="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mx-auto mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">verified</span>
+        </div>
+        <h3 class="font-headline font-bold text-sm mb-2">Átlátható folyamat</h3>
+        <p class="text-on-surface-variant text-xs leading-relaxed">Nincsenek rejtett díjak vagy meglepetések — minden lépésről tájékoztatjuk.</p>
       </div>
-      <div class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group">
-        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">gavel</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">Jogi tanácsadás</h3>
-        <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Teljes körű jogi hatter, szerzodeskotes es foldhivatali ugyintezes profi stabbal.</p>
-        <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Részletek <span class="material-symbols-outlined">arrow_right_alt</span></a>
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 text-center hover:shadow-lg transition-all">
+        <div class="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mx-auto mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">speed</span>
+        </div>
+        <h3 class="font-headline font-bold text-sm mb-2">Gyors ügyintézés</h3>
+        <p class="text-on-surface-variant text-xs leading-relaxed">Átlagosan 45 nap alatt sikeres értékesítés, a piaci átlag felénél gyorsabban.</p>
       </div>
-      <div class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group">
-        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">payments</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">Hitelügyintézés</h3>
-        <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Bankfüggetlen tanácsadás és a legkedvezőbb finanszírozási ajánlatok egy helyen.</p>
-        <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Részletek <span class="material-symbols-outlined">arrow_right_alt</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured District -->
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div class="relative rounded-2xl overflow-hidden h-[300px] md:h-[450px]">
+        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I" alt="Budapest belváros"/>
       </div>
-      <div class="bg-primary-container p-6 md:p-8 rounded-2xl hover:translate-y-[-4px] transition-all group">
-        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl md:text-4xl mb-4 md:mb-6">architecture</span>
-        <h3 class="text-lg md:text-xl font-bold font-headline mb-2 md:mb-3">Home Staging</h3>
-        <p class="text-on-primary-container text-xs md:text-sm leading-relaxed mb-4 md:mb-6">Ingatlan felkészítése az eladásra az érték maximalizálása érdekében.</p>
-        <a class="text-secondary-fixed-dim font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm" href="#">Részletek <span class="material-symbols-outlined">arrow_right_alt</span></a>
+      <div>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-4 block">Kiemelt környék</span>
+        <h2 class="font-headline text-2xl md:text-4xl font-extrabold tracking-tight mb-4">Budapest V. kerület</h2>
+        <p class="text-on-surface-variant text-sm md:text-base leading-relaxed mb-6">A Belváros-Lipótváros Budapest szíve — itt találkozik a történelem a modern eleganciával. Világörökségi panoráma, pezsgő gasztro élet és kiváló közlekedés jellemzi ezt a kerületet.</p>
+        <div class="grid grid-cols-3 gap-4 mb-8">
+          <div class="bg-surface-container-low p-4 rounded-xl text-center">
+            <div class="text-lg md:text-xl font-headline font-bold text-primary">1.2M</div>
+            <div class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Ft/m² átlag</div>
+          </div>
+          <div class="bg-surface-container-low p-4 rounded-xl text-center">
+            <div class="text-lg md:text-xl font-headline font-bold text-primary">342</div>
+            <div class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Elérhető</div>
+          </div>
+          <div class="bg-surface-container-low p-4 rounded-xl text-center">
+            <div class="text-lg md:text-xl font-headline font-bold text-primary">+8.5%</div>
+            <div class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Éves növekedés</div>
+          </div>
+        </div>
+        <a href="kereses.html" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-primary-container transition-all">
+          Ingatlanok az V. kerületben <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-16 md:py-24 bg-primary text-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <h2 class="font-headline text-2xl md:text-4xl font-extrabold tracking-tight text-center mb-12 md:mb-16">Ügyfeleink <span class="text-secondary-fixed-dim">mondták</span></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div class="bg-primary-container p-6 md:p-8 rounded-2xl">
+        <div class="flex gap-1 mb-4">
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <p class="text-on-primary-container text-sm leading-relaxed mb-6">"A Kulcs Ingatlan csapata fantasztikus munkát végzett. 3 hét alatt eladták a lakásunkat a kért áron. Profi fotók, gyors kommunikáció!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-fixed-dim text-primary font-bold text-sm flex items-center justify-center">KP</div>
+          <div>
+            <div class="font-headline font-bold text-sm text-white">Kovács Péter</div>
+            <div class="text-white/50 text-xs">Eladó, V. kerület</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-primary-container p-6 md:p-8 rounded-2xl">
+        <div class="flex gap-1 mb-4">
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <p class="text-on-primary-container text-sm leading-relaxed mb-6">"Álmaink otthonát találtuk meg a segítségükkel. A tanácsadónk pontosan megértette az igényeinket és tökéletes ajánlatokat mutatott."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-fixed-dim text-primary font-bold text-sm flex items-center justify-center">NA</div>
+          <div>
+            <div class="font-headline font-bold text-sm text-white">Nagy Anna</div>
+            <div class="text-white/50 text-xs">Vevő, XII. kerület</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-primary-container p-6 md:p-8 rounded-2xl">
+        <div class="flex gap-1 mb-4">
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <p class="text-on-primary-container text-sm leading-relaxed mb-6">"Az AI értékbecslés annyira pontos volt, hogy végül pontosan az ajánlott áron kelt el az ingatlanom. Nagyon ajánlom mindenkinek!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-secondary-fixed-dim text-primary font-bold text-sm flex items-center justify-center">TG</div>
+          <div>
+            <div class="font-headline font-bold text-sm text-white">Tóth Gábor</div>
+            <div class="text-white/50 text-xs">Eladó, II. kerület</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="py-16 md:py-20">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="bg-primary rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 class="font-headline text-xl md:text-3xl font-extrabold text-white mb-2">Ingatlant adna el?</h2>
+        <p class="text-white/60 text-sm md:text-base">Kérjen ingyenes értékbecslést és derítse ki, mennyit ér az Ön ingatlanja.</p>
+      </div>
+      <a href="ertekbecsles.html" class="bg-secondary text-on-secondary px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-secondary-fixed-dim transition-all active:scale-95 flex-shrink-0 flex items-center gap-2">
+        <span class="material-symbols-outlined">analytics</span> Ingyenes értékbecslés
+      </a>
     </div>
   </div>
 </section>

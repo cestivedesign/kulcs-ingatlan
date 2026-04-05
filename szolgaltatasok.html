@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kulcs Ingatlan - Szolgáltatások</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-surface":"#191c1d","on-tertiary":"#ffffff","error-container":"#ffdad6","secondary":"#775a19","tertiary-fixed":"#ffdea6","inverse-primary":"#b7c8de","primary-fixed-dim":"#b7c8de","on-background":"#191c1d","surface-dim":"#d8dadb","secondary-fixed-dim":"#e9c176","outline-variant":"#c4c6cd","on-surface-variant":"#44474c","surface-container":"#eceeef","primary-fixed":"#d2e4fb","error":"#ba1a1a","on-tertiary-container":"#a98d5a","primary-container":"#1a2b3c","surface-variant":"#e1e3e4","surface-bright":"#f8fafb","on-secondary":"#ffffff","on-primary-container":"#8192a7","on-tertiary-fixed-variant":"#594318","on-secondary-container":"#785a1a","tertiary-container":"#382600","secondary-fixed":"#ffdea5","on-secondary-fixed-variant":"#5d4201","surface-tint":"#4f6073","primary":"#041627","on-primary-fixed-variant":"#38485a","inverse-on-surface":"#eff1f2","secondary-container":"#fed488","background":"#f8fafb","outline":"#74777d","on-tertiary-fixed":"#271900","on-error-container":"#93000a","on-primary-fixed":"#0b1d2d","tertiary-fixed-dim":"#e2c28b","surface-container-low":"#f2f4f5","surface-container-highest":"#e1e3e4","inverse-surface":"#2e3132","on-secondary-fixed":"#261900","surface-container-lowest":"#ffffff","surface":"#f8fafb","tertiary":"#1e1300","on-error":"#ffffff","on-primary":"#ffffff","surface-container-high":"#e6e8e9"
+      },
+      borderRadius: { DEFAULT:"0.125rem", lg:"0.25rem", xl:"0.5rem", full:"0.75rem" },
+      fontFamily: { headline:["Manrope"], body:["Inter"], label:["Inter"] }
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align:middle; }
+.glass-nav { backdrop-filter:blur(12px); background-color:rgba(4,22,39,0.9); }
+.hero-gradient { background:linear-gradient(135deg,rgba(4,22,39,0.95) 0%,rgba(26,43,60,0.8) 100%); }
+.mobile-menu { transform:translateX(-100%); transition:transform 0.3s ease; }
+.mobile-menu.open { transform:translateX(0); }
+.mobile-menu-overlay { opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+.mobile-menu-overlay.open { opacity:1; pointer-events:auto; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-fixed-dim selection:text-primary">
+
+<!-- Mobile Side Menu -->
+<div class="mobile-menu-overlay fixed inset-0 bg-black/50 z-[60]" id="menuOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu fixed top-0 left-0 w-72 h-full bg-primary z-[70] flex flex-col" id="mobileMenu">
+  <div class="p-6 border-b border-white/10">
+    <div class="flex justify-between items-center">
+      <span class="font-headline font-bold text-white text-lg uppercase tracking-widest">Kulcs Ingatlan</span>
+      <span class="material-symbols-outlined text-white cursor-pointer" onclick="toggleMenu()">close</span>
+    </div>
+  </div>
+  <nav class="flex flex-col p-6 gap-1">
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="index.html">Kezdőlap</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="kereses.html">Eladó</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="kereses.html">Kiadó</a>
+    <a class="text-[#e9c176] bg-white/10 py-3 px-4 font-headline text-sm uppercase tracking-wider rounded-lg" href="szolgaltatasok.html">Szolgáltatások</a>
+    <a class="text-white/90 hover:text-secondary-fixed-dim py-3 px-4 font-headline text-sm uppercase tracking-wider hover:bg-white/5 rounded-lg transition-all" href="ertekbecsles.html">Értékbecslés</a>
+  </nav>
+  <div class="mt-auto p-6 border-t border-white/10">
+    <a href="admin.html" class="flex items-center gap-2 text-white/60 hover:text-secondary-fixed-dim py-2 text-sm transition-colors">
+      <span class="material-symbols-outlined text-sm">admin_panel_settings</span> Admin
+    </a>
+  </div>
+</div>
+
+<!-- Utility Topbar -->
+<div class="hidden md:flex justify-between items-center px-8 py-2 bg-primary text-white/70 text-xs font-label border-b border-white/5">
+  <div class="flex gap-6">
+    <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">call</span> +36 1 987 6543</span>
+    <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">location_on</span> Andrássy út 15, Budaörs</span>
+  </div>
+  <div class="flex gap-4">
+    <button class="hover:text-secondary-fixed-dim transition-colors">HU</button><span class="opacity-30">|</span>
+    <button class="hover:text-secondary-fixed-dim transition-colors">EN</button><span class="opacity-30">|</span>
+    <button class="hover:text-secondary-fixed-dim transition-colors">DE</button>
+  </div>
+</div>
+
+<!-- Main Navigation -->
+<nav class="flex justify-between items-center w-full px-6 py-4 glass-nav sticky top-0 z-50">
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined md:hidden text-white cursor-pointer" onclick="toggleMenu()">menu</span>
+    <a href="index.html" class="text-xl font-headline font-bold text-white uppercase tracking-widest">Kulcs Ingatlan</a>
+  </div>
+  <div class="hidden md:flex gap-8 items-center">
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="index.html">Kezdőlap</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="kereses.html">Eladó</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="kereses.html">Kiadó</a>
+    <a class="text-[#e9c176] font-semibold font-headline tracking-tight text-sm uppercase" href="szolgaltatasok.html">Szolgáltatások</a>
+    <a class="text-white/80 hover:text-[#e9c176] transition-colors duration-300 font-headline tracking-tight text-sm uppercase" href="ertekbecsles.html">Értékbecslés</a>
+  </div>
+  <div class="flex items-center gap-4">
+    <button class="hidden lg:block bg-secondary text-on-secondary px-6 py-2.5 rounded-md font-headline font-bold text-xs uppercase tracking-wider hover:bg-secondary-fixed-dim transition-all active:scale-95">
+      Ingyenes értékbecslés
+    </button>
+    <a href="kereses.html"><span class="material-symbols-outlined text-white cursor-pointer">search</span></a>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="relative h-[40vh] md:h-[50vh] flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img alt="Szolgáltatások" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLh5x5nn7AOuH9Cv4YrNjxQCZCVlJpU91rFnrtXsOhQ7xl7wIsPjmqN4-xEckONq4EDpRRcu8368O0xE3TaIc3hVEc3MhVt0YO-0TmM1bwKSgBUhKAV5zzwXTlsBHBiXEGlFeVejDf8zfYoFTia-btWj8SEXnoKgMy8V_4btIAdQSdktVkcyuxyUfNe_vTZ6qaKqbuXdSjAm7vp7SeTat3kYo0sjOH63szhyBzdzYO-a5ufRKZiEyZqeMrRohb-QGGSwdKG8eXi9I"/>
+    <div class="absolute inset-0 hero-gradient"></div>
+  </div>
+  <div class="container mx-auto px-4 md:px-6 relative z-10 text-center">
+    <h1 class="text-white font-headline text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Szolgáltatásaink</h1>
+    <p class="text-white/70 text-sm md:text-lg max-w-2xl mx-auto">Teljes körű ingatlanszolgáltatás a keresésétől az átadásig, professzionális csapattal.</p>
+  </div>
+</section>
+
+<!-- Services Grid -->
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+      <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+        <div class="w-14 h-14 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">home</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-3">Ingatlan értékesítés</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Személyre szabott marketing stratégia és professzionális fotózás minden eladó ingatlanhoz. Célzott hirdetések a megfelelő vevők eléréséhez.</p>
+        <ul class="space-y-2 text-sm text-on-surface-variant">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Professzionális fotózás és videó</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Online és offline marketing</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Vevők előszűrése</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+        <div class="w-14 h-14 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">key</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-3">Bérbeadás management</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Megbízható bérlők felkutatása és folyamatos ingatlankezelés hosszú távra. Gondoskodunk mindenről az Ön helyett.</p>
+        <ul class="space-y-2 text-sm text-on-surface-variant">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Bérlő szűrés és ellenőrzés</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Szerződéskezelés</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Karbantartás koordinálás</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+        <div class="w-14 h-14 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-3">Jogi tanácsadás</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Teljes körű jogi háttér, szerződéskötés és földhivatali ügyintézés profi stábbal. Biztonságos tranzakciók.</p>
+        <ul class="space-y-2 text-sm text-on-surface-variant">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Adásvételi szerződés</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Tulajdonlap ellenőrzés</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Földhivatali ügyintézés</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+        <div class="w-14 h-14 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">payments</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-3">Hitelügyintézés</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Bankfüggetlen tanácsadás és a legkedvezőbb finanszírozási ajánlatok egy helyen. Segítünk a legjobb hitel megtalálásában.</p>
+        <ul class="space-y-2 text-sm text-on-surface-variant">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Bankfüggetlen összehasonlítás</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> CSOK és támogatások</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Teljes ügyintézés</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+        <div class="w-14 h-14 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">architecture</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-3">Home Staging</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Ingatlan felkészítése az eladásra az érték maximalizálása érdekében. Akár 15%-kal magasabb eladási ár.</p>
+        <ul class="space-y-2 text-sm text-on-surface-variant">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Belsőépítészeti tanácsadás</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Bútorozás és dekoráció</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> Professzionális fotózás</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-secondary/30 hover:shadow-xl transition-all group relative overflow-hidden">
+        <div class="absolute top-4 right-4 bg-secondary text-on-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Népszerű</div>
+        <div class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-secondary text-3xl">analytics</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold font-headline mb-3">AI alapú értékbecslés</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Valós idejű piaci adatok alapján számított pontos ingatlanérték meghatározás mesterséges intelligenciával.</p>
+        <a href="ertekbecsles.html" class="inline-flex items-center gap-2 text-secondary font-bold text-sm hover:gap-3 transition-all">
+          Kipróbálom <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-16 md:py-24 bg-primary text-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <h2 class="font-headline text-2xl md:text-4xl font-extrabold tracking-tight text-center mb-4">Hogyan működik?</h2>
+    <p class="text-white/60 text-center text-sm md:text-base mb-12 md:mb-16 max-w-xl mx-auto">Egyszerű és átlátható folyamat a kezdetektől az átadásig.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full bg-secondary-fixed-dim text-primary font-headline font-black text-2xl flex items-center justify-center mx-auto mb-4">1</div>
+        <h3 class="font-headline font-bold mb-2">Kapcsolatfelvétel</h3>
+        <p class="text-white/60 text-sm">Vegye fel velünk a kapcsolatot telefonon vagy emailben, és egyeztessünk egy személyes találkozót.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full bg-secondary-fixed-dim text-primary font-headline font-black text-2xl flex items-center justify-center mx-auto mb-4">2</div>
+        <h3 class="font-headline font-bold mb-2">Felmérés</h3>
+        <p class="text-white/60 text-sm">Helyszíni szemle és piaci elemzés alapján meghatározzuk az optimális stratégiát az Ön ingatlanjához.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full bg-secondary-fixed-dim text-primary font-headline font-black text-2xl flex items-center justify-center mx-auto mb-4">3</div>
+        <h3 class="font-headline font-bold mb-2">Marketing</h3>
+        <p class="text-white/60 text-sm">Professzionális fotózás, hirdetések elkészítése és célzott kampányok indítása a legjobb vevők eléréséhez.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full bg-secondary-fixed-dim text-primary font-headline font-black text-2xl flex items-center justify-center mx-auto mb-4">4</div>
+        <h3 class="font-headline font-bold mb-2">Átadás</h3>
+        <p class="text-white/60 text-sm">Szerződéskötés, jogi ügyintézés és sikeres átadás — a teljes folyamatot végigkísérjük.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-4 md:px-6 text-center">
+    <h2 class="font-headline text-2xl md:text-4xl font-extrabold tracking-tight mb-4">Kérdése van?</h2>
+    <p class="text-on-surface-variant text-sm md:text-base mb-8 max-w-xl mx-auto">Vegye fel velünk a kapcsolatot és segítünk megtalálni a tökéletes megoldást az Ön számára.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:+3619876543" class="bg-primary text-white px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">call</span> +36 1 987 6543
+      </a>
+      <a href="mailto:info@kulcsingatlan.hu" class="border-2 border-primary text-primary px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">mail</span> Email küldése
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary text-white pt-12 md:pt-16 pb-28 md:pb-12">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-label text-slate-500 uppercase tracking-widest">
+      <div>© 2024 Kulcs Ingatlan. Minden jog fenntartva.</div>
+      <div class="flex gap-6">
+        <a class="hover:text-white transition-colors" href="#">Adatvédelem</a>
+        <a class="hover:text-white transition-colors" href="#">Impresszum</a>
+        <a class="hover:text-white transition-colors" href="#">Sütik</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Bottom Nav -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 glass-nav rounded-t-xl shadow-[0_-4px_20px_rgba(4,22,39,0.3)]">
+  <a href="index.html" class="flex flex-col items-center justify-center text-slate-400">
+    <span class="material-symbols-outlined">home</span>
+    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Kezdőlap</span>
+  </a>
+  <a href="kereses.html" class="flex flex-col items-center justify-center text-slate-400">
+    <span class="material-symbols-outlined">search</span>
+    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Keresés</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center text-slate-400">
+    <span class="material-symbols-outlined">favorite</span>
+    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Kedvencek</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center text-slate-400">
+    <span class="material-symbols-outlined">person</span>
+    <span class="text-[10px] font-medium uppercase tracking-tighter mt-1">Profil</span>
+  </a>
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('menuOverlay').classList.toggle('open');
+}
+</script>
+</body>
+</html>

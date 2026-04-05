@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/kereses", "destination": "/kereses.html" },
-    { "source": "/ingatlan/:id", "destination": "/ingatlan.html" }
+    { "source": "/szolgaltatasok", "destination": "/szolgaltatasok.html" },
+    { "source": "/ertekbecsles", "destination": "/ertekbecsles.html" }
   ]
 }
