@@ -176,53 +176,65 @@ tailwind.config = {
 </nav>
 
 <!-- Hero Section -->
-<section class="relative h-[600px] md:h-[751px] flex items-center overflow-hidden">
+<section class="relative h-[70vh] md:h-[85vh] flex items-center overflow-hidden">
   <div class="absolute inset-0 z-0">
-    <img alt="Luxury Budapest Home" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVnn5CXNa_Fj9587SXlnjPUlpxiXRjNJivYvzjl5-R5oBqTwS5o-N2uYQLmER5hyuMA-NWcnNpg-tUS9Uje4IWguO5h0HYE37SFMiaJaubmX4EYU_XjUS7vUFo8MBhrYrgJEx2OsCRmXNPwm04dJw5nUnxvYua07DkNI0MZ9ok5_IrxZyNy8K75kT8o91pQW9HPQYTjwLKzG3bkAXvXKEgIdMBcvvbokwTs9dCYGh_cdfYEg-YEefk-_ItwBoK_h1Cl6mPpxEa_cc"/>
+    <img alt="Luxury Budapest Home" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5wUy-V6eR3WO3I7P5sc20Rc11bZJAtYzHywYhmpTsfv8RRulvLBVKikjXcJXIJQDap-Q9mKbb-wlAwm8IPQvMp4ruV-sjJhF_FuB7FqJ6omdl74V5Qlqqp_5u6vZWgs3x-QVUN-_mDx1zQNQvkiJoQT0nAN6FWCsEkafwngjv_TSmw73l1ElZ8WPeBoUukMVr0PE9jHg4QaTqNeRjTz9aY9_OLEZE_EKMAnDxNVWV4yb2vTCwE4_p0CmRdENACB-NrSMUFfxInM"/>
     <div class="absolute inset-0 hero-gradient"></div>
   </div>
-  <div class="container mx-auto px-4 md:px-6 relative z-10">
-    <div class="max-w-3xl">
-      <h1 class="text-white font-headline text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6 md:mb-8">
-        Találd meg az otthonod <span class="text-secondary-fixed-dim">Budapesten</span>
-      </h1>
-      <!-- Main Search Bento Tray -->
-      <div class="bg-white p-2 rounded-xl shadow-2xl flex flex-col gap-2">
-        <div class="flex-1 grid grid-cols-2 md:grid-cols-4 gap-2">
-          <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors md:border-r border-outline-variant/10">
-            <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Kerület</label>
-            <select class="bg-transparent border-none p-0 text-xs sm:text-sm font-semibold focus:ring-0">
-              <option>Összes kerület</option>
-              <option>V. Kerület</option>
-              <option>VI. Kerület</option>
-              <option>XII. Kerület</option>
-            </select>
-          </div>
-          <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors md:border-r border-outline-variant/10">
-            <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Típus</label>
-            <select class="bg-transparent border-none p-0 text-xs sm:text-sm font-semibold focus:ring-0">
-              <option>Lakás</option>
-              <option>Ház</option>
-              <option>Telek</option>
-            </select>
-          </div>
-          <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors md:border-r border-outline-variant/10">
-            <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1"> Ár (15M-200M Ft)</label>
-            <input class="accent-secondary h-1.5 mt-2" max="200" min="15" type="range"/>
-          </div>
-          <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors">
-            <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Szobák</label>
-            <div class="flex gap-2">
-              <button class="text-xs font-bold w-8 h-8 rounded border border-outline-variant">1</button>
-              <button class="text-xs font-bold w-8 h-8 rounded border border-outline-variant">2</button>
-              <button class="text-xs font-bold w-8 h-8 rounded bg-primary text-white">3+</button>
-            </div>
+  <div class="container mx-auto px-4 md:px-6 relative z-10 text-center">
+    <h1 class="text-white font-headline text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold tracking-tight leading-tight mb-4 md:mb-6">
+      Találd meg az otthonod <br/><span class="text-secondary-fixed-dim">Budapesten</span>
+    </h1>
+    <p class="text-white/70 text-base md:text-xl font-light max-w-2xl mx-auto mb-8 md:mb-10">Prémium ingatlanok a főváros legkeresettebb részein, személyre szabott szolgáltatással.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="kereses.html" class="bg-secondary text-on-secondary px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-secondary-fixed-dim transition-all active:scale-95 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">search</span> Ingatlanok böngészése
+      </a>
+      <a href="#ertekbecsles" class="border-2 border-white/30 text-white px-8 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-wider hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">analytics</span> Ingyenes értékbecslés
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Search Bar Section -->
+<section class="relative z-20 -mt-8 md:-mt-10 mb-4">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="bg-white p-2 rounded-xl shadow-2xl flex flex-col md:flex-row gap-2 max-w-4xl mx-auto">
+      <div class="flex-1 grid grid-cols-2 md:grid-cols-4 gap-2">
+        <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors md:border-r border-outline-variant/10">
+          <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Kerület</label>
+          <select class="bg-transparent border-none p-0 text-xs sm:text-sm font-semibold focus:ring-0">
+            <option>Összes kerület</option>
+            <option>V. Kerület</option>
+            <option>VI. Kerület</option>
+            <option>XII. Kerület</option>
+          </select>
+        </div>
+        <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors md:border-r border-outline-variant/10">
+          <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Típus</label>
+          <select class="bg-transparent border-none p-0 text-xs sm:text-sm font-semibold focus:ring-0">
+            <option>Lakás</option>
+            <option>Ház</option>
+            <option>Telek</option>
+          </select>
+        </div>
+        <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors md:border-r border-outline-variant/10">
+          <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Ár (M Ft)</label>
+          <input class="accent-secondary h-1.5 mt-2" max="200" min="15" type="range"/>
+        </div>
+        <div class="flex flex-col p-3 hover:bg-surface-container-low rounded-lg transition-colors">
+          <label class="text-[10px] font-bold uppercase text-outline tracking-widest mb-1">Szobák</label>
+          <div class="flex gap-2">
+            <button class="room-btn text-xs font-bold w-8 h-8 rounded border border-outline-variant" onclick="selectRoom(this)">1</button>
+            <button class="room-btn text-xs font-bold w-8 h-8 rounded border border-outline-variant" onclick="selectRoom(this)">2</button>
+            <button class="room-btn text-xs font-bold w-8 h-8 rounded bg-primary text-white" onclick="selectRoom(this)">3+</button>
           </div>
         </div>
-        <a href="kereses.html" class="bg-primary text-white px-8 py-4 rounded-lg font-headline font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
-          <span class="material-symbols-outlined">search</span> Kereses
-        </a>
       </div>
+      <a href="kereses.html" class="bg-primary text-white px-8 py-4 rounded-lg font-headline font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+        <span class="material-symbols-outlined">search</span> Keresés
+      </a>
     </div>
   </div>
 </section>
@@ -268,7 +280,7 @@ tailwind.config = {
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       <!-- Card 1 -->
-      <div class="group bg-surface-container-lowest overflow-hidden border border-outline-variant/10 transition-all hover:shadow-2xl">
+      <a href="kereses.html" class="group bg-surface-container-lowest overflow-hidden border border-outline-variant/10 transition-all hover:shadow-2xl cursor-pointer block">
         <div class="relative h-48 sm:h-64 overflow-hidden">
           <img alt="Apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbAw_ke3LDSwNi6X8j2jnJcyXC7zy6I5wI8qhs_LgZ1bpAOT9nDu-wLWDBrmhInCB8Ugtv5tYeOThXXc5YY-KWL3jhypa2Vxrzd6WVHJEm9a1xBfh7DNFSWYTO-TCx1rv6-ndogK38pkz-z_DfI3_BSbGuIwWWR1rwydMdZDAf4q8QFtNTMKhmlm_eBhcgWvcj7PDq3hzZyLXhYxrbUOV8AIHm2vJjzW5QOY3Qyptl-o8zK8vyDVg5EXyucmGsGLfeCLGKIlEy51Q"/>
           <span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">Új</span>
@@ -290,9 +302,9 @@ tailwind.config = {
             </button>
           </div>
         </div>
-      </div>
+      </a>
       <!-- Card 2 -->
-      <div class="group bg-surface-container-lowest overflow-hidden border border-outline-variant/10 transition-all hover:shadow-2xl">
+      <a href="kereses.html" class="group bg-surface-container-lowest overflow-hidden border border-outline-variant/10 transition-all hover:shadow-2xl cursor-pointer block">
         <div class="relative h-48 sm:h-64 overflow-hidden">
           <img alt="Apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0720tDPorR2GSeqo0E9HpwOzdYKAAy1z2LnSwP8vzZgRhLlUOTgxSJMi2T7zYWNSwN3pqz95CP8fcxjHIqX5-mJztbNlgfyAfpMEBwuYSMZuOaf2iLdItbYx-4BLSDxjAaH_qGGn_bjbB4E4ICtR4MqOA_AfmbvAfx995eF3jRapwH8Ad5RqdDfbQ-4papBwZl907_4wAhsGcGmwkdNaKaz3k-x5U45WdXKC9jPYql-QChCZdNe1UJspyH1XiRxI5gH1l5vJVF-4"/>
           <span class="absolute top-4 left-4 bg-secondary-fixed-dim text-primary text-[10px] font-bold px-3 py-1 uppercase tracking-widest">Exkluzív</span>
@@ -314,9 +326,9 @@ tailwind.config = {
             </button>
           </div>
         </div>
-      </div>
+      </a>
       <!-- Card 3 -->
-      <div class="group bg-surface-container-lowest overflow-hidden border border-outline-variant/10 transition-all hover:shadow-2xl">
+      <a href="kereses.html" class="group bg-surface-container-lowest overflow-hidden border border-outline-variant/10 transition-all hover:shadow-2xl cursor-pointer block">
         <div class="relative h-48 sm:h-64 overflow-hidden">
           <img alt="Apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANSWBnBmTfenf5w2qkvB58Ko9RqxKQg98BQ0LOnil6Fqjy1GC6fJcJBHWKQXLRBG5PUQIZ3Ed5X68GMTHElpPzbQxP0PHQQ29N4J4eSV-GPAqrgtjFz_-O4o4p9tCT74TQII8l12lczrqj73P7WTJTB3d5JIwAL3VMOqSlyc04ORSFu0458A3SRlDpcKJbBUMzsX8vMShp9hmgSa9FrpHysJCEu7Ki4_6paTQXhBra558Zr5_8s3ll94BsK8m2PVniLO4xUlVArmg"/>
           <span class="absolute top-4 left-4 bg-error text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">Csökkentett ár</span>
@@ -338,7 +350,7 @@ tailwind.config = {
             </button>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -461,6 +473,30 @@ function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
   document.getElementById('menuOverlay').classList.toggle('open');
 }
+
+function selectRoom(btn) {
+  document.querySelectorAll('.room-btn').forEach(b => {
+    b.className = 'room-btn text-xs font-bold w-8 h-8 rounded border border-outline-variant';
+  });
+  btn.className = 'room-btn text-xs font-bold w-8 h-8 rounded bg-primary text-white';
+}
+
+document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+  if (icon.textContent.trim() === 'favorite') {
+    icon.parentElement.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const filled = this.querySelector('.material-symbols-outlined');
+      if (filled.style.fontVariationSettings.includes("'FILL' 1")) {
+        filled.style.fontVariationSettings = "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+        this.classList.remove('bg-primary', 'text-white');
+      } else {
+        filled.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+        this.classList.add('bg-primary', 'text-white');
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>
